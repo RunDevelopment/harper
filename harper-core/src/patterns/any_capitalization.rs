@@ -3,6 +3,7 @@ use crate::{CharString, Token};
 use super::Pattern;
 
 /// A [`Pattern`] that matches any capitalization of a provided word.
+#[derive(Clone)]
 pub struct AnyCapitalization {
     word: CharString,
 }
