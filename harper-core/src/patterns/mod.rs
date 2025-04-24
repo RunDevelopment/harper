@@ -5,9 +5,7 @@
 //!
 //! See the page about [`SequencePattern`] for a concrete example of their use.
 
-use std::collections::VecDeque;
-
-use crate::{Document, Span, Token, VecExt};
+use crate::{Document, Span, Token};
 
 mod all;
 mod any_capitalization;
@@ -79,30 +77,17 @@ where
     fn find_all_matches(&self, tokens: &[Token], source: &[char]) -> Vec<Span> {
         let mut found = Vec::new();
 
-        for i in 0..tokens.len() {
+        let mut i = 0;
+        while i < tokens.len() {
             let len = self.matches(&tokens[i..], source);
 
             if len > 0 {
                 found.push(Span::new_with_len(i, len));
+                i += len;
+            } else {
+                i += 1;
             }
         }
-
-        if found.len() < 2 {
-            return found;
-        }
-
-        let mut remove_indices = VecDeque::new();
-
-        for i in 0..found.len() - 1 {
-            let cur = &found[i];
-            let next = &found[i + 1];
-
-            if cur.overlaps_with(*next) {
-                remove_indices.push_back(i + 1);
-            }
-        }
-
-        found.remove_indices(remove_indices);
 
         found
     }
