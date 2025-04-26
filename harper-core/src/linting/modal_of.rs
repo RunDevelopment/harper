@@ -1,6 +1,6 @@
 use crate::{
     Lrc, Token, TokenStringExt,
-    patterns::{EitherPattern, Pattern, SequencePattern, WordSet},
+    patterns::{Pattern, new_syntax_experiment::prelude::*},
 };
 
 use super::{Lint, LintKind, PatternLinter, Suggestion};
@@ -21,43 +21,17 @@ impl Default for ModalOf {
             words.add(&format!("{}n't", word));
         });
 
-        let modal_of = Lrc::new(
-            SequencePattern::default()
-                .then(words)
-                .then_whitespace()
-                .t_aco("of"),
-        );
-
-        let ws_course = Lrc::new(SequencePattern::default().then_whitespace().t_aco("course"));
-
-        let modal_of_course = Lrc::new(
-            SequencePattern::default()
-                .then(modal_of.clone())
-                .then(ws_course.clone()),
-        );
-
-        let anyword_might_of = Lrc::new(
-            SequencePattern::default()
-                .then_any_word()
-                .then_whitespace()
-                .t_aco("might")
-                .then_whitespace()
-                .t_aco("of"),
-        );
-
-        let anyword_might_of_course = Lrc::new(
-            SequencePattern::default()
-                .then(anyword_might_of.clone())
-                .then(ws_course.clone()),
-        );
+        let modal_of = Lrc::new(seq![words, WS, "of"]);
+        let anyword_might_of = Lrc::new(seq![WORD, WS, "might", WS, "of"]);
 
         Self {
-            pattern: Box::new(EitherPattern::new(vec![
-                Box::new(anyword_might_of_course),
-                Box::new(modal_of_course),
-                Box::new(anyword_might_of),
-                Box::new(modal_of),
-            ])),
+            pattern: Box::new(Choice::new((
+                // TODO: Use optional for <WS "course">
+                seq![anyword_might_of.clone(), WS, "course"],
+                seq![modal_of.clone(), WS, "course"],
+                anyword_might_of,
+                modal_of,
+            ))),
         }
     }
 }

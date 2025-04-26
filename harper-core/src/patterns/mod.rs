@@ -18,6 +18,7 @@ mod implies_quantity;
 mod indefinite_article;
 mod invert;
 mod naive_pattern_group;
+pub mod new_syntax_experiment;
 mod nominal_phrase;
 mod pattern_map;
 mod repeating_pattern;
