@@ -85,12 +85,12 @@ impl Linter for OxfordComma {
 
                 if let Some(match_len) = match_len {
                     let lint = self.match_to_lint(
-                        &sentence[tok_cursor..tok_cursor + match_len.get()],
+                        &sentence[tok_cursor..tok_cursor + match_len],
                         document.get_source(),
                     );
 
                     lints.extend(lint);
-                    tok_cursor += match_len.get();
+                    tok_cursor += match_len;
                 } else {
                     tok_cursor += 1;
                 }

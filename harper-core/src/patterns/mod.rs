@@ -5,7 +5,7 @@
 //!
 //! See the page about [`SequencePattern`] for a concrete example of their use.
 
-use std::{collections::VecDeque, num::NonZeroUsize};
+use std::collections::VecDeque;
 
 use crate::{Document, Span, Token, VecExt};
 
@@ -55,7 +55,7 @@ pub trait Pattern {
     /// Check if the pattern matches at the start of the given token slice.
     ///
     /// Returns the length of the match if successful, or `None` if not.
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize>;
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize>;
 }
 #[cfg(feature = "concurrent")]
 #[blanket(derive(Arc))]
@@ -63,7 +63,7 @@ pub trait Pattern: Send + Sync {
     /// Check if the pattern matches at the start of the given token slice.
     ///
     /// Returns the length of the match if successful, or `None` if not.
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize>;
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize>;
 }
 
 pub trait PatternExt {
@@ -82,7 +82,7 @@ where
             let len = self.matches(&tokens[i..], source);
 
             if let Some(len) = len {
-                found.push(Span::new_with_len(i, len.get()));
+                found.push(Span::new_with_len(i, len));
             }
         }
 
@@ -126,8 +126,12 @@ where
     F: Fn(&Token, &[char]) -> bool,
     F: Send + Sync,
 {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
-        NonZeroUsize::new(if self(tokens.first()?, source) { 1 } else { 0 })
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
+        if self(tokens.first()?, source) {
+            Some(1)
+        } else {
+            None
+        }
     }
 }
 

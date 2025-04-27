@@ -54,11 +54,10 @@ pub fn run_on_chunk(linter: &impl PatternLinter, chunk: &[Token], source: &[char
         let match_len = linter.pattern().matches(&chunk[tok_cursor..], source);
 
         if let Some(match_len) = match_len {
-            let lint =
-                linter.match_to_lint(&chunk[tok_cursor..tok_cursor + match_len.get()], source);
+            let lint = linter.match_to_lint(&chunk[tok_cursor..tok_cursor + match_len], source);
 
             lints.extend(lint);
-            tok_cursor += match_len.get();
+            tok_cursor += match_len;
         } else {
             tok_cursor += 1;
         }

@@ -1,5 +1,3 @@
-use std::num::NonZeroUsize;
-
 use crate::{CharString, Token};
 
 use super::Pattern;
@@ -23,7 +21,7 @@ impl AnyCapitalization {
 }
 
 impl Pattern for AnyCapitalization {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         let tok = tokens.first()?;
 
         if !tok.kind.is_word() {
@@ -41,6 +39,6 @@ impl Pattern for AnyCapitalization {
             .zip(&self.word)
             .all(|(a, b)| a.eq_ignore_ascii_case(b));
 
-        NonZeroUsize::new(if partial_match { 1 } else { 0 })
+        if partial_match { Some(1) } else { None }
     }
 }
