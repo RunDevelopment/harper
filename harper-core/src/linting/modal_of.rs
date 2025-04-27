@@ -25,13 +25,13 @@ impl Default for ModalOf {
         let anyword_might_of = Lrc::new(seq![WORD, WS, "might", WS, "of"]);
 
         Self {
-            pattern: Box::new(Choice::new((
+            pattern: Box::new(choice![
                 // TODO: Use optional for <WS "course">
                 seq![anyword_might_of.clone(), WS, "course"],
                 seq![modal_of.clone(), WS, "course"],
                 anyword_might_of,
                 modal_of,
-            ))),
+            ]),
         }
     }
 }

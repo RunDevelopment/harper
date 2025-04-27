@@ -7,6 +7,13 @@ use super::{AnyCapitalization, AnyPattern, Pattern, WhitespacePattern};
 pub trait IntoPattern {
     type Output: Pattern + 'static;
     fn into_pattern(self) -> Self::Output;
+
+    fn into_pattern_boxed(self) -> Box<dyn Pattern + 'static>
+    where
+        Self: Sized,
+    {
+        Box::new(self.into_pattern())
+    }
 }
 impl<T: Pattern + 'static> IntoPattern for T {
     type Output = T;
@@ -21,62 +28,12 @@ impl IntoPattern for &str {
     }
 }
 
-pub trait IntoPatternList {
-    fn into_pattern_list(self) -> Vec<Box<dyn Pattern>>;
-}
-impl IntoPatternList for Vec<Box<dyn Pattern>> {
-    #[inline]
-    fn into_pattern_list(self) -> Vec<Box<dyn Pattern>> {
-        self
-    }
-}
-impl IntoPatternList for () {
-    #[inline]
-    fn into_pattern_list(self) -> Vec<Box<dyn Pattern>> {
-        Vec::new()
-    }
-}
-impl<P: IntoPattern> IntoPatternList for P {
-    #[inline]
-    fn into_pattern_list(self) -> Vec<Box<dyn Pattern>> {
-        vec![Box::new(self.into_pattern())]
-    }
-}
-
-macro_rules! impl_into_pattern_list {
-    ($($name:ident = $index:tt),+) => {
-        impl<$($name: IntoPattern),+> IntoPatternList for ($($name),+) {
-            #[inline]
-            fn into_pattern_list(self) -> Vec<Box<dyn Pattern>> {
-                vec![$(Box::new(self.$index.into_pattern())),+]
-            }
-        }
-    };
-}
-impl_into_pattern_list!(A = 0, B = 1);
-impl_into_pattern_list!(A = 0, B = 1, C = 2);
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3);
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4);
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5);
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6);
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7);
-#[rustfmt::skip]
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8);
-#[rustfmt::skip]
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8, J = 9);
-#[rustfmt::skip]
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8, J = 9, K = 10);
-#[rustfmt::skip]
-impl_into_pattern_list!(A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8, J = 9, K = 10, L = 11);
-
 pub struct Sequence {
-    pub patterns: Vec<Box<dyn Pattern>>,
+    patterns: Vec<Box<dyn Pattern>>,
 }
 impl Sequence {
-    pub fn new(patterns: impl IntoPatternList) -> Self {
-        Self {
-            patterns: patterns.into_pattern_list(),
-        }
+    pub fn new(patterns: Vec<Box<dyn Pattern>>) -> Self {
+        Self { patterns }
     }
 }
 impl Pattern for Sequence {
@@ -93,13 +50,11 @@ impl Pattern for Sequence {
 }
 
 pub struct Choice {
-    pub patterns: Vec<Box<dyn Pattern>>,
+    patterns: Vec<Box<dyn Pattern>>,
 }
 impl Choice {
-    pub fn new(patterns: impl IntoPatternList) -> Self {
-        Self {
-            patterns: patterns.into_pattern_list(),
-        }
+    pub fn new(patterns: Vec<Box<dyn Pattern>>) -> Self {
+        Self { patterns }
     }
 }
 impl Pattern for Choice {
@@ -159,12 +114,24 @@ pub const WS: WhitespacePattern = WhitespacePattern;
 
 pub mod prelude {
     pub use super::super::{Pattern, WordSet};
-    pub use super::{ANY, Choice, Sequence, WORD, WS, exact};
+    pub use super::{ANY, Choice, IntoPattern, Sequence, WORD, WS, exact};
 
     macro_rules! seq {
+        ($item:expr $(,)?) => {
+            IntoPattern::into_pattern($item)
+        };
         ($($item:expr),* $(,)?) => {
-            Sequence::new(($($item),*))
+            Sequence::new(vec![$(IntoPattern::into_pattern_boxed($item)),*])
         };
     }
-    pub(crate) use seq;
+    macro_rules! choice {
+        ($($item:literal),+ $(,)?) => {
+            WordSet::new(&[$($item),*])
+        };
+        ($($item:expr),* $(,)?) => {
+            Choice::new(vec![$(IntoPattern::into_pattern_boxed($item)),*])
+        };
+    }
+
+    pub(crate) use {choice, seq};
 }
