@@ -124,9 +124,19 @@ pub fn ahead(pattern: impl Pattern) -> impl Pattern {
     Ahead(pattern)
 }
 
+/// Matches any single token, regardless of its kind.
 #[derive(Clone, Copy)]
-pub struct WordTokenPattern;
-impl Pattern for WordTokenPattern {
+pub struct AnyToken;
+impl Pattern for AnyToken {
+    fn matches(&self, tokens: &[Token], _source: &[char]) -> Option<usize> {
+        if tokens.is_empty() { None } else { Some(1) }
+    }
+}
+
+/// Matches any word token.
+#[derive(Clone, Copy)]
+pub struct AnyWord;
+impl Pattern for AnyWord {
     fn matches(&self, tokens: &[Token], _source: &[char]) -> Option<usize> {
         let tok = tokens.first()?;
         if !tok.kind.is_word() {
@@ -136,13 +146,12 @@ impl Pattern for WordTokenPattern {
     }
 }
 
-pub const ANY: AnyPattern = AnyPattern;
-pub const WORD: WordTokenPattern = WordTokenPattern;
 pub const WS: WhitespacePattern = WhitespacePattern;
 
 pub mod prelude {
+
     pub use super::super::{Pattern, WordSet};
-    pub use super::{ANY, Choice, IntoPattern, Sequence, WORD, WS, exact};
+    pub use super::{AnyToken, AnyWord, Choice, IntoPattern, Sequence, WS, exact};
 
     /// Matches a sequence of patterns.
     ///
