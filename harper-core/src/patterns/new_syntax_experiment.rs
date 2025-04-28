@@ -90,11 +90,38 @@ impl Pattern for ExactWord {
         if eq { Some(1) } else { None }
     }
 }
-
 pub fn exact(word: &str) -> impl Pattern {
     ExactWord {
         word: word.chars().collect(),
     }
+}
+
+struct Not<P>(P);
+impl<P: Pattern> Pattern for Not<P> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
+        if self.0.matches(tokens, source).is_some() {
+            None
+        } else {
+            Some(0)
+        }
+    }
+}
+pub fn not(pattern: impl Pattern) -> impl Pattern {
+    Not(pattern)
+}
+
+struct Ahead<P>(P);
+impl<P: Pattern> Pattern for Ahead<P> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
+        if self.0.matches(tokens, source).is_some() {
+            Some(0)
+        } else {
+            None
+        }
+    }
+}
+pub fn ahead(pattern: impl Pattern) -> impl Pattern {
+    Ahead(pattern)
 }
 
 #[derive(Clone, Copy)]
@@ -117,6 +144,16 @@ pub mod prelude {
     pub use super::super::{Pattern, WordSet};
     pub use super::{ANY, Choice, IntoPattern, Sequence, WORD, WS, exact};
 
+    /// Matches a sequence of patterns.
+    ///
+    /// This is the same as concatenating the patterns together.
+    ///
+    /// ## Examples
+    ///
+    /// ```rust
+    /// use crate::patterns::new_syntax_experiment::preluse::*;
+    /// let confession = seq!["I", WS, "love", WS, "you"];
+    /// ```
     macro_rules! seq {
         ($item:expr $(,)?) => {
             IntoPattern::into_pattern($item)
@@ -125,6 +162,14 @@ pub mod prelude {
             Sequence::new(vec![$(IntoPattern::into_pattern_boxed($item)),*])
         };
     }
+    /// Matches any of the given patterns.
+    ///
+    /// ## Examples
+    ///
+    /// ```rust
+    /// use crate::patterns::new_syntax_experiment::preluse::*;
+    /// let fav_animal = choice!["dog", "cat", seq!["black", WS, "bear"]];
+    /// ```
     macro_rules! choice {
         ($($item:literal),+ $(,)?) => {
             WordSet::new(&[$($item),*])
@@ -134,5 +179,38 @@ pub mod prelude {
         };
     }
 
-    pub(crate) use {choice, seq};
+    /// An assertion that matches the given sequence of patterns, but does NOT
+    /// consume any tokens.
+    ///
+    /// ## Examples
+    ///
+    /// ```rust
+    /// use crate::patterns::new_syntax_experiment::preluse::*;
+    /// let love = seq!["I", WS, "love", ahead![WS, "you"]];
+    /// ```
+    macro_rules! ahead {
+        ($($item:expr),* $(,)?) => {
+            crate::patterns::new_syntax_experiment::ahead(seq![$($item),*])
+        };
+    }
+    /// An assertion that matches anything but the given sequence of patterns.
+    /// No tokens are consumed.
+    ///
+    /// ## Examples
+    ///
+    /// ```rust
+    /// use crate::patterns::new_syntax_experiment::preluse::*;
+    /// let love_no_ego = seq!["I", WS, "love", not_ahead![WS, "myself"]];
+    /// ```
+    macro_rules! not_ahead {
+        ($($item:expr),* $(,)?) => {
+            crate::patterns::new_syntax_experiment::not(
+                crate::patterns::new_syntax_experiment::ahead(
+                    seq![$($item),*]
+                )
+            )
+        };
+    }
+
+    pub(crate) use {ahead, choice, not_ahead, seq};
 }

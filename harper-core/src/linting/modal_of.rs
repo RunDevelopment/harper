@@ -1,5 +1,5 @@
 use crate::{
-    Lrc, Token, TokenStringExt,
+    Token, TokenStringExt,
     patterns::{Pattern, new_syntax_experiment::prelude::*},
 };
 
@@ -21,16 +21,10 @@ impl Default for ModalOf {
             words.add(&format!("{}n't", word));
         });
 
-        let modal_of = Lrc::new(seq![words, WS, "of"]);
-        let anyword_might_of = Lrc::new(seq![WORD, WS, "might", WS, "of"]);
-
         Self {
             pattern: Box::new(choice![
-                // TODO: Use optional for <WS "course">
-                seq![anyword_might_of.clone(), WS, "course"],
-                seq![modal_of.clone(), WS, "course"],
-                anyword_might_of,
-                modal_of,
+                seq![WORD, WS, "might", WS, "of", not_ahead![WS, "course"]],
+                seq![words, WS, "of", not_ahead![WS, "course"]],
             ]),
         }
     }
@@ -43,20 +37,7 @@ impl PatternLinter for ModalOf {
 
     fn match_to_lint(&self, matched_toks: &[Token], source_chars: &[char]) -> Option<Lint> {
         let modal_index = match matched_toks.len() {
-            // Without context, always an error from the start
-            3 => 0,
             5 => {
-                // False positives: modal _ of _ course / adj. _ might _ of / art. _ might _ of
-                let w3_text = matched_toks
-                    .last()
-                    .unwrap()
-                    .span
-                    .get_content(source_chars)
-                    .iter()
-                    .collect::<String>();
-                if w3_text.as_str() != "of" {
-                    return None;
-                }
                 let w1_kind = &matched_toks.first().unwrap().kind;
                 // the might of something, great might of something
                 if w1_kind.is_adjective() || w1_kind.is_determiner() {
@@ -65,9 +46,8 @@ impl PatternLinter for ModalOf {
                 // not a false positive, skip context before
                 2
             }
-            // False positive: <word> _ might _ of _ course
-            7 => return None,
-            _ => unreachable!(),
+            // Without context, always an error from the start
+            _ => 0,
         };
 
         let span_modal_of = matched_toks[modal_index..modal_index + 3].span().unwrap();
