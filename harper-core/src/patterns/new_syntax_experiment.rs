@@ -1,5 +1,3 @@
-use std::num::NonZeroUsize;
-
 use crate::{CharString, Token};
 
 use super::{AnyCapitalization, AnyPattern, Pattern, WhitespacePattern};
@@ -37,15 +35,15 @@ impl Sequence {
     }
 }
 impl Pattern for Sequence {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         let mut tok_cursor = 0;
 
         for pat in &self.patterns {
             let match_length = pat.matches(&tokens[tok_cursor..], source)?;
-            tok_cursor += match_length.get();
+            tok_cursor += match_length;
         }
 
-        NonZeroUsize::new(tok_cursor)
+        Some(tok_cursor)
     }
 }
 
@@ -58,15 +56,18 @@ impl Choice {
     }
 }
 impl Pattern for Choice {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
-        let mut longest = 0;
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
+        let mut longest: Option<usize> = None;
 
         for pattern in self.patterns.iter() {
-            let match_len = pattern.matches(tokens, source).map_or(0, NonZeroUsize::get);
-            longest = longest.max(match_len);
+            let Some(match_len) = pattern.matches(tokens, source) else {
+                continue;
+            };
+
+            longest = Some(longest.unwrap_or(0).max(match_len));
         }
 
-        NonZeroUsize::new(longest)
+        longest
     }
 }
 
@@ -74,7 +75,7 @@ struct ExactWord {
     word: CharString,
 }
 impl Pattern for ExactWord {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         let tok = tokens.first()?;
         if !tok.kind.is_word() {
             return None;
@@ -86,7 +87,7 @@ impl Pattern for ExactWord {
         let chars = tok.span.get_content(source);
         let eq = chars == self.word.as_slice();
 
-        NonZeroUsize::new(if eq { 1 } else { 0 })
+        if eq { Some(1) } else { None }
     }
 }
 
@@ -99,12 +100,12 @@ pub fn exact(word: &str) -> impl Pattern {
 #[derive(Clone, Copy)]
 pub struct WordTokenPattern;
 impl Pattern for WordTokenPattern {
-    fn matches(&self, tokens: &[Token], _source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], _source: &[char]) -> Option<usize> {
         let tok = tokens.first()?;
         if !tok.kind.is_word() {
             return None;
         }
-        NonZeroUsize::new(1)
+        Some(1)
     }
 }
 
