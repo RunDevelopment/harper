@@ -1153,6 +1153,12 @@ pub fn lint_group() -> LintGroup {
             "Traditionally `invest` uses the preposition `in`.",
             "`Invest` is traditionally followed by 'in,' not `into.`"
         ),
+        "CouldNotCareLess" => (
+            ["could care less"],
+            ["couldn't care less", "could not care less"],
+            "If you `could care less`, you still care. The correct phrase is `couldn't care less`.",
+            "Corrects the phrase `could care less` to `couldn't care less` to convey indifference."
+        ),
     });
 
     group.set_all_rules_to(Some(true));
@@ -2429,6 +2435,15 @@ mod tests {
             "If a user invests into the protocol first using USDC but afterward changing to DAI, ...",
             lint_group(),
             "If a user invests in the protocol first using USDC but afterward changing to DAI, ...",
+        );
+    }
+
+    #[test]
+    fn corrects_could_care_less() {
+        assert_suggestion_result(
+            "I could care less about your oh so cool project.",
+            lint_group(),
+            "I couldn't care less about your oh so cool project.",
         );
     }
 }
