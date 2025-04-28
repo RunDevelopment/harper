@@ -1,5 +1,3 @@
-use std::num::NonZeroUsize;
-
 use super::Pattern;
 use smallvec::SmallVec;
 
@@ -40,7 +38,7 @@ impl WordSet {
 }
 
 impl Pattern for WordSet {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         let tok = tokens.first()?;
         if !tok.kind.is_word() {
             return None;
@@ -59,7 +57,7 @@ impl Pattern for WordSet {
                 .all(|(a, b)| a.eq_ignore_ascii_case(b));
 
             if partial_match {
-                return NonZeroUsize::new(1);
+                return Some(1);
             }
         }
 

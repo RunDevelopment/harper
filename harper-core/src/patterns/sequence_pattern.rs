@@ -1,5 +1,3 @@
-use std::num::NonZeroUsize;
-
 use paste::paste;
 
 use super::whitespace_pattern::WhitespacePattern;
@@ -165,7 +163,7 @@ impl SequencePattern {
 
     pub fn then_one_or_more(mut self, pat: impl Pattern + 'static) -> Self {
         self.token_patterns
-            .push(Box::new(RepeatingPattern::new(Box::new(pat), 0)));
+            .push(Box::new(RepeatingPattern::new(Box::new(pat), 1)));
         self
     }
 
@@ -183,22 +181,20 @@ impl SequencePattern {
 }
 
 impl Pattern for SequencePattern {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         let mut tok_cursor = 0;
 
         for pat in self.token_patterns.iter() {
             let match_length = pat.matches(&tokens[tok_cursor..], source)?;
-            tok_cursor += match_length.get();
+            tok_cursor += match_length;
         }
 
-        NonZeroUsize::new(tok_cursor)
+        Some(tok_cursor)
     }
 }
 
 #[cfg(test)]
 mod tests {
-
-    use std::num::NonZeroUsize;
 
     use super::SequencePattern;
     use crate::Document;
@@ -214,7 +210,7 @@ mod tests {
 
         assert_eq!(
             pat.matches(doc.get_tokens(), doc.get_source()),
-            NonZeroUsize::new(doc.get_tokens().len())
+            Some(doc.get_tokens().len())
         );
     }
 
@@ -228,7 +224,7 @@ mod tests {
 
         assert_eq!(
             pat.matches(doc.get_tokens(), doc.get_source()),
-            NonZeroUsize::new(doc.get_tokens().len())
+            Some(doc.get_tokens().len())
         );
     }
 
@@ -239,7 +235,7 @@ mod tests {
 
         assert_eq!(
             pat.matches(doc.get_tokens(), doc.get_source()),
-            NonZeroUsize::new(doc.get_tokens().len())
+            Some(doc.get_tokens().len())
         );
     }
 }

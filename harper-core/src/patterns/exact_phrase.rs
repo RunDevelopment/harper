@@ -1,5 +1,3 @@
-use std::num::NonZeroUsize;
-
 use crate::{Document, Token, TokenKind};
 
 use super::{AnyCapitalization, Pattern, SequencePattern};
@@ -46,7 +44,7 @@ impl ExactPhrase {
 }
 
 impl Pattern for ExactPhrase {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<NonZeroUsize> {
+    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
         self.inner.matches(tokens, source)
     }
 }
