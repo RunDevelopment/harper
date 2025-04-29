@@ -1129,6 +1129,12 @@ pub fn lint_group() -> LintGroup {
             "A more vivid adjective would better convey intense hunger.",
             "Encourages vivid writing by suggesting `starving` instead of weaker expressions like `very hungry.`"
         ),
+        "LastDitch" => (
+            ["last ditch", "last ditched", "last-ditched"],
+            ["last-ditch"],
+            "In this idiom, `ditch` is a noun and a hyphen is needed.",
+            "Corrects wrong variations of the idiomatic adjective `last-ditch`."
+        ),
         "InvestIn" => (
             ["invest into"],
             ["invest in"],
@@ -1152,6 +1158,12 @@ pub fn lint_group() -> LintGroup {
             ["invests in"],
             "Traditionally `invest` uses the preposition `in`.",
             "`Invest` is traditionally followed by 'in,' not `into.`"
+        ),
+        "AsWell" => (
+            ["aswell"],
+            ["as well"],
+            "The correct term is `as well` with a space.",
+            "Corrects `aswell`, which should be written as two words."
         ),
     });
 
@@ -2397,11 +2409,29 @@ mod tests {
     }
 
     #[test]
+    fn correct_last_ditched() {
+        assert_suggestion_result(
+            "I was actually just trying that as a last ditched attempt to get it working, previously those ...",
+            lint_group(),
+            "I was actually just trying that as a last-ditch attempt to get it working, previously those ...",
+        );
+    }
+
+    #[test]
     fn corrects_invested_into() {
         assert_suggestion_result(
             "it's all automatically invested into a collection of loans that match the criteria that ...",
             lint_group(),
             "it's all automatically invested in a collection of loans that match the criteria that ...",
+        );
+    }
+
+    #[test]
+    fn correct_last_ditch_space() {
+        assert_suggestion_result(
+            "There are unique use cases and is meant to be a last ditch option.",
+            lint_group(),
+            "There are unique use cases and is meant to be a last-ditch option.",
         );
     }
 
@@ -2429,6 +2459,33 @@ mod tests {
             "If a user invests into the protocol first using USDC but afterward changing to DAI, ...",
             lint_group(),
             "If a user invests in the protocol first using USDC but afterward changing to DAI, ...",
+        );
+    }
+
+    #[test]
+    fn corrects_as_keyboards_aswell() {
+        assert_suggestion_result(
+            "Tool to read physical joystick devices, keyboards aswell, and create virtual joystick devices and output keyboard presses on a Linux system.",
+            lint_group(),
+            "Tool to read physical joystick devices, keyboards as well, and create virtual joystick devices and output keyboard presses on a Linux system.",
+        );
+    }
+
+    #[test]
+    fn corrects_aswell_as() {
+        assert_suggestion_result(
+            "When UseAcrylic is true in Focused aswell as Unfocused Apearance , changing enableUnfocusedAcrylic at runtime doesn't work",
+            lint_group(),
+            "When UseAcrylic is true in Focused as well as Unfocused Apearance , changing enableUnfocusedAcrylic at runtime doesn't work",
+        );
+    }
+
+    #[test]
+    fn corrects_toml_aswell() {
+        assert_suggestion_result(
+            "format Cargo.toml aswell #5893 - rust-lang/rustfmt",
+            lint_group(),
+            "format Cargo.toml as well #5893 - rust-lang/rustfmt",
         );
     }
 }
