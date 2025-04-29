@@ -378,9 +378,9 @@ pub mod prelude {
     ///
     /// ```rust
     /// use crate::patterns::new_syntax_experiment::preluse::*;
-    /// let love = seq!["I", WS, "love", ahead![WS, "you"]];
+    /// let love = seq!["I", WS, "love", next![WS, "you"]];
     /// ```
-    macro_rules! ahead {
+    macro_rules! next {
         ($($item:expr),* $(,)?) => {
             crate::patterns::new_syntax_experiment::ahead(seq![$($item),*])
         };
@@ -392,9 +392,9 @@ pub mod prelude {
     ///
     /// ```rust
     /// use crate::patterns::new_syntax_experiment::preluse::*;
-    /// let love_no_ego = seq!["I", WS, "love", not_ahead![WS, "myself"]];
+    /// let love_no_ego = seq!["I", WS, "love", not_next![WS, "myself"]];
     /// ```
-    macro_rules! not_ahead {
+    macro_rules! not_next {
         ($($item:expr),* $(,)?) => {
             crate::patterns::new_syntax_experiment::not(
                 crate::patterns::new_syntax_experiment::ahead(
@@ -404,5 +404,5 @@ pub mod prelude {
         };
     }
 
-    pub(crate) use {ahead, choice, not_ahead, seq};
+    pub(crate) use {choice, next, not_next, seq};
 }

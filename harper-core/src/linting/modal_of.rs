@@ -23,8 +23,8 @@ impl Default for ModalOf {
 
         Self {
             pattern: Box::new(choice![
-                seq![AnyWord, WS, "might", WS, "of", not_ahead![WS, "course"]],
-                seq![words, WS, "of", not_ahead![WS, "course"]],
+                seq![AnyWord, WS, "might", WS, "of", not_next![WS, "course"]],
+                seq![words, WS, "of", not_next![WS, "course"]],
             ]),
         }
     }
