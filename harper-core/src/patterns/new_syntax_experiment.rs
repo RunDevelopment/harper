@@ -1,6 +1,6 @@
 use crate::{CharString, Token};
 
-use super::{AnyCapitalization, Pattern, SinlgeTokenPattern, WhitespacePattern};
+use super::{Pattern, SinlgeTokenPattern, WhitespacePattern, Word};
 
 pub trait IntoPattern {
     type Output: Pattern + 'static;
@@ -19,10 +19,10 @@ impl<T: Pattern + 'static> IntoPattern for T {
         self
     }
 }
-impl IntoPattern for &str {
-    type Output = AnyCapitalization;
+impl IntoPattern for &'static str {
+    type Output = Word;
     fn into_pattern(self) -> Self::Output {
-        AnyCapitalization::of(self)
+        Word::new(self)
     }
 }
 
@@ -144,7 +144,7 @@ pub const WS: WhitespacePattern = WhitespacePattern;
 pub mod predicates {
     use crate::{
         Token, TokenKind,
-        patterns::{AnyCapitalization, SinlgeTokenPattern},
+        patterns::{SinlgeTokenPattern, Word},
     };
 
     pub trait IntoSingleTokenPattern {
@@ -157,10 +157,10 @@ pub mod predicates {
             self
         }
     }
-    impl IntoSingleTokenPattern for &str {
-        type Output = AnyCapitalization;
+    impl IntoSingleTokenPattern for &'static str {
+        type Output = Word;
         fn into_single_token_pattern(self) -> Self::Output {
-            AnyCapitalization::of(self)
+            Word::new(self)
         }
     }
 
