@@ -1,7 +1,6 @@
 use crate::{
     Token,
-    char_string::char_string,
-    patterns::{AnyCapitalization, OwnedPatternExt, Pattern, SequencePattern},
+    patterns::{Pattern, new_syntax_experiment::prelude::*},
 };
 
 use super::{Lint, LintKind, PatternLinter, Suggestion};
@@ -12,16 +11,8 @@ pub struct Confident {
 
 impl Default for Confident {
     fn default() -> Self {
-        let pattern = SequencePattern::default()
-            .then(
-                (|tok: &Token, _source: &[char]| tok.kind.is_verb() || tok.kind.is_determiner())
-                    .or(Box::new(AnyCapitalization::new(char_string!("very")))),
-            )
-            .then_whitespace()
-            .t_aco("confidant");
-
         Self {
-            pattern: Box::new(pattern),
+            pattern: Box::new(seq![Verb | Det | "very", WS, "confidant"]),
         }
     }
 }

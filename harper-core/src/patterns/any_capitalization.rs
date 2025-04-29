@@ -1,6 +1,6 @@
 use crate::{CharString, Token};
 
-use super::Pattern;
+use super::SinlgeTokenPattern;
 
 /// A [`Pattern`] that matches any capitalization of a provided word.
 #[derive(Clone)]
@@ -20,25 +20,21 @@ impl AnyCapitalization {
     }
 }
 
-impl Pattern for AnyCapitalization {
-    fn matches(&self, tokens: &[Token], source: &[char]) -> Option<usize> {
-        let tok = tokens.first()?;
-
+impl SinlgeTokenPattern for AnyCapitalization {
+    fn matches_token(&self, tok: &Token, source: &[char]) -> bool {
         if !tok.kind.is_word() {
-            return None;
+            return false;
         }
 
         if tok.span.len() != self.word.len() {
-            return None;
+            return false;
         }
 
         let tok_chars = tok.span.get_content(source);
 
-        let partial_match = tok_chars
+        tok_chars
             .iter()
             .zip(&self.word)
-            .all(|(a, b)| a.eq_ignore_ascii_case(b));
-
-        if partial_match { Some(1) } else { None }
+            .all(|(a, b)| a.eq_ignore_ascii_case(b))
     }
 }
