@@ -78,12 +78,8 @@ impl HumanReadableExpansion {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Property {
     /// Whether the metadata will propagate to all derived words.
-    #[serde(default = "default_false")]
+    #[serde(default)]
     pub propagate: bool,
     /// The metadata applied to the word.
     pub metadata: WordMetadata,
-}
-
-fn default_false() -> bool {
-    false
 }
