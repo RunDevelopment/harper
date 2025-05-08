@@ -683,11 +683,9 @@ Lint:    Spelling (63 priority)
 Message: |
      479 | thinking, but I doubt if even Miss Baker, who seemed to have mastered a certain
      480 | hardy scepticism, was able utterly to put this fifth guest’s shrill metallic
-         |       ^~~~~~~~~~ Did you mean to spell `scepticism` this way?
+         |       ^~~~~~~~~~ Did you mean `skepticism`?
 Suggest:
   - Replace with: “skepticism”
-  - Replace with: “sceptic's”
-  - Replace with: “scepticism's”
 
 
 
@@ -1711,11 +1709,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
     1373 | Taking our scepticism for granted, he rushed to the bookcases and returned with
-         |            ^~~~~~~~~~ Did you mean to spell `scepticism` this way?
+         |            ^~~~~~~~~~ Did you mean `skepticism`?
 Suggest:
   - Replace with: “skepticism”
-  - Replace with: “sceptic's”
-  - Replace with: “scepticism's”
 
 
 
@@ -3675,12 +3671,10 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
     2455 | hard, limited person, who dealt in universal scepticism, and who leaned back
-         |                                              ^~~~~~~~~~ Did you mean to spell `scepticism` this way?
+         |                                              ^~~~~~~~~~ Did you mean `skepticism`?
     2456 | jauntily just within the circle of my arm. A phrase began to beat in my ears
 Suggest:
   - Replace with: “skepticism”
-  - Replace with: “sceptic's”
-  - Replace with: “scepticism's”
 
 
 
@@ -4468,11 +4462,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
     3319 | at the local club to-morrow, spoke in Miss Baedeker’s defence:
-         |                                                       ^~~~~~~ Did you mean to spell `defence` this way?
+         |                                                       ^~~~~~~ Did you mean `defense`?
 Suggest:
   - Replace with: “defense”
-  - Replace with: “decency”
-  - Replace with: “deface”
 
 
 

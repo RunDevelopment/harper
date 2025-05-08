@@ -70,11 +70,12 @@ pub(crate) fn is_ou_misspelling(a: &[char], b: &[char]) -> bool {
     }
 }
 
-/// Returns whether the two words are the same, expect that one is written
-/// with 's' and the other with 'z'.
+/// Returns whether the two words are the same, expect for a single confusion of:
 ///
-/// E.g. "realize" and "realise"
-pub(crate) fn is_sz_misspelling(a: &[char], b: &[char]) -> bool {
+/// - `s` and `z`. E.g."realize" and "realise"
+/// - `s` and `c`. E.g. "defense" and "defence"
+/// - `k` and `c`. E.g. "skepticism" and "scepticism"
+pub(crate) fn is_cksz_misspelling(a: &[char], b: &[char]) -> bool {
     if a.len() != b.len() {
         return false;
     }
@@ -87,25 +88,30 @@ pub(crate) fn is_sz_misspelling(a: &[char], b: &[char]) -> bool {
         return false;
     }
 
-    let mut found_sz = false;
+    let mut found = false;
     for (a_char, b_char) in a.iter().copied().zip(b.iter().copied()) {
         let a_char = a_char.to_ascii_lowercase();
         let b_char = b_char.to_ascii_lowercase();
 
         if a_char != b_char {
-            if (a_char == 's' && b_char == 'z') || (a_char == 'z' && b_char == 's') {
-                if found_sz {
-                    // 2 or more 's' or 'z' confusions
+            if (a_char == 's' && b_char == 'z')
+                || (a_char == 'z' && b_char == 's')
+                || (a_char == 's' && b_char == 'c')
+                || (a_char == 'c' && b_char == 's')
+                || (a_char == 'k' && b_char == 'c')
+                || (a_char == 'c' && b_char == 'k')
+            {
+                if found {
                     return false;
                 }
-                found_sz = true;
+                found = true;
             } else {
                 return false;
             }
         }
     }
 
-    found_sz
+    found
 }
 
 /// Returns whether the two words are the same, expect that one is written
@@ -213,7 +219,7 @@ fn score_suggestion(misspelled_word: &[char], sug: &FuzzyMatchResult) -> i32 {
 
     // Detect dialect-specific variations
     if sug.edit_distance == 1
-        && (is_sz_misspelling(misspelled_word, sug.word)
+        && (is_cksz_misspelling(misspelled_word, sug.word)
             || is_ou_misspelling(misspelled_word, sug.word)
             || is_ll_misspelling(misspelled_word, sug.word))
     {

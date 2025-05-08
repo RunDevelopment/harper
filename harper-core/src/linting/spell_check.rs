@@ -7,7 +7,7 @@ use super::Suggestion;
 use super::{Lint, LintKind, Linter};
 use crate::document::Document;
 use crate::spell::{
-    is_er_misspelling, is_ll_misspelling, is_ou_misspelling, is_sz_misspelling,
+    is_cksz_misspelling, is_er_misspelling, is_ll_misspelling, is_ou_misspelling,
     suggest_correct_spelling,
 };
 use crate::{CharString, CharStringExt, Dialect, Dictionary, TokenStringExt};
@@ -89,7 +89,7 @@ impl<T: Dictionary> Linter for SpellCheck<T> {
             if let Some(most_likely) = possibilities.first() {
                 // If the most likely suggestion is a common misspelling, ignore all others.
                 if is_ou_misspelling(most_likely, word_chars)
-                    || is_sz_misspelling(most_likely, word_chars)
+                    || is_cksz_misspelling(most_likely, word_chars)
                     || is_er_misspelling(most_likely, word_chars)
                     || is_ll_misspelling(most_likely, word_chars)
                 {

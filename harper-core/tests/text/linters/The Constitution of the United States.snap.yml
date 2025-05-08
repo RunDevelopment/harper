@@ -16,12 +16,10 @@ Message: |
 Lint:    Spelling (63 priority)
 Message: |
        6 | establish Justice, insure domestic Tranquility, provide for the common defence,
-         |                                                                        ^~~~~~~ Did you mean to spell `defence` this way?
+         |                                                                        ^~~~~~~ Did you mean `defense`?
        7 | promote the general Welfare, and secure the Blessings of Liberty to ourselves
 Suggest:
   - Replace with: “defense”
-  - Replace with: “decency”
-  - Replace with: “deface”
 
 
 
@@ -531,12 +529,10 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      203 | Imposts and Excises, to pay the Debts and provide for the common Defence and
-         |                                                                  ^~~~~~~ Did you mean to spell `Defence` this way?
+         |                                                                  ^~~~~~~ Did you mean `Defense`?
      204 | general Welfare of the United States; but all Duties, Imposts and Excises shall
 Suggest:
   - Replace with: “Defense”
-  - Replace with: “Fence”
-  - Replace with: “Terence”
 
 
 
