@@ -3,11 +3,11 @@
 >
 #
 > This document contains example sentences with misspelled words that    we  want  to test  the spell checker on  .
-# I/D  NSg/V    NPl      NSg/V   NPl       P    W?         NPl   N/I/C/D IPl NSg/V P  NSg/V D   NSg   NSg/V   J/P .
+# I/D  NSg/V    V        NSg/V   NPl/V     P    V/J        NPl/V N/I/C/D IPl NSg/V P  NSg/V D   NSg   NSg/V   J/P .
 >
 #
 > Example Sentences
-# NSg/V   NPl
+# NSg/V   NPl/V
 >
 #
 > My favourite color      is blu .
