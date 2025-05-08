@@ -309,13 +309,13 @@
 >
 #
 > Dynamic programming methods
-# NSg/J   NSg/V       NPl/V
+# NSg/J   NSg/V/Br    NPl/V
 >
 #
 > In 1987 , Steven DeRose and Kenneth W. Church  independently developed dynamic
 # P  #    . NPr    ?      V/C NPr     ?  NPrSg/V J/R           V/J       NSg/J
 > programming algorithms to solve the same problem in          vastly less    time  . Their
-# NSg/V       NPl        P  NSg/V D   I/J  NSg/J   NPrSg/V/J/P J/R    V/J/C/P NSg/V . D
+# NSg/V/Br    NPl        P  NSg/V D   I/J  NSg/J   NPrSg/V/J/P J/R    V/J/C/P NSg/V . D
 > methods were  similar to the Viterbi algorithm known   for some  time  in          other
 # NPl     NSg/V NSg/J   P  D   ?       NSg       NSg/V/J C/P I/J/R NSg/V NPrSg/V/J/P NSg/V/J
 > fields  . DeRose used a   table of pairs , while     Church  used a   table of triples and a
@@ -327,7 +327,7 @@
 > larger corpus ) . Both methods achieved an  accuracy of over      95 % . DeRose's 1990
 # J      NSg    . . I/C  NPl/V   V/J      D/P NSg      P  NSg/V/J/P #  . . ?        #
 > dissertation at        Brown     University included analyses of the specific error types ,
-# NSg          NSg/I/V/P NPrSg/V/J NSg        V/J      NSg/V    P  D   NSg/J    NSg/V NPl/V .
+# NSg          NSg/I/V/P NPrSg/V/J NSg        V/J      NSg/V/Br P  D   NSg/J    NSg/V NPl/V .
 > probabilities , and other   related data , and replicated his   work for Greek     , where
 # NPl           . V/C NSg/V/J J       NSg  . V/C V/J        ISg/D NSg  C/P NPrSg/V/J . NSg/C
 > it        proved similarly effective .

@@ -31,7 +31,7 @@
 > security vulnerabilities . Computer graphics and computational geometry address
 # NSg      NSg             . NSg/V    NPl      V/C J             NSg      NSg/V
 > the generation of images . Programming language theory considers different ways
-# D   NSg        P  NPl/V  . NSg/V       NSg/V    NSg    V         NSg/J     NPl
+# D   NSg        P  NPl/V  . NSg/V/Br    NSg/V    NSg    V         NSg/J     NPl
 > to describe computational processes , and database theory concerns the management
 # P  NSg/V    J             NPl/V     . V/C NSg/V    NSg    NSg/V    D   NSg
 > of repositories of data . Human   – computer interaction investigates the interfaces
@@ -103,7 +103,7 @@
 > started the design of the first automatic mechanical calculator , his   Difference
 # V/J     D   NSg    P  D   NSg/J NSg/J     NSg/J      NSg        . ISg/D NSg
 > Engine , in 1822 , which eventually gave him the idea of the first programmable
-# NSg/V  . P  #    . I/C   J/R        V    I   D   NSg  P  D   NSg/J NSg/J
+# NSg/V  . P  #    . I/C   J/R        V    I   D   NSg  P  D   NSg/J NSg/J/Br
 > mechanical calculator , his   Analytical Engine . He      started developing this machine
 # NSg/J      NSg        . ISg/D J          NSg/V  . NPr/ISg V/J     V          I/D  NSg/V
 > in 1834 , and " in          less    than two years , he      had sketched out         many    of the salient
@@ -113,7 +113,7 @@
 > card  system derived from the Jacquard loom  " making it        infinitely
 # NSg/V NSg    V/J     P    D   NPrSg    NSg/V . NSg/V  NPrSg/ISg J/R
 > programmable . [ note  2 ] In 1843 , during the translation of a   French  article on the
-# NSg/J        . . NSg/V # . P  #    . V/P    D   NSg         P  D/P NPrSg/J NSg/V   P  D
+# NSg/J/Br     . . NSg/V # . P  #    . V/P    D   NSg         P  D/P NPrSg/J NSg/V   P  D
 > Analytical Engine , Ada Lovelace wrote , in          one       of the many    notes she included , an
 # J          NSg/V  . NPr NPrSg    V     . NPrSg/V/J/P NSg/I/V/J P  D   N/I/J/D NPl/V ISg V/J      . D/P
 > algorithm to compute the Bernoulli numbers , which is considered to be     the first
@@ -149,7 +149,7 @@
 > which was making all       kinds of punched card  equipment and was also in the
 # I/C   V   NSg/V  NSg/I/J/C NSg   P  V/J     NSg/V NSg       V/C V   W?   P  D
 > calculator business to develop his   giant programmable calculator , the
-# NSg        NSg/J    P  V       ISg/D NSg/J NSg/J        NSg        . D
+# NSg        NSg/J    P  V       ISg/D NSg/J NSg/J/Br     NSg        . D
 > ASCC / Harvard Mark    I   , based on  Babbage's Analytical Engine , which itself used
 # ?    . NPr     NPrSg/V ISg . V/J   J/P N$        J          NSg/V  . I/C   I      V/J
 > cards and a   central computing unit . When    the machine was finished , some  hailed
@@ -413,7 +413,7 @@
 > computer programs as    mathematical sentences and interpret formal semantics for
 # NSg/V    NPl/V    NSg/R J            NPl/V     V/C V         NSg/J  NSg       C/P
 > programming languages as    mathematical axiomatic systems .
-# NSg/V       NPl/V     NSg/R J            J         NPl     .
+# NSg/V/Br    NPl/V     NSg/R J            J         NPl     .
 >
 #
 > Paradigms of computer science
@@ -443,7 +443,7 @@
 > artificial intelligence ) . Computer science focuses on  methods involved in
 # J          NSg          . . NSg/V    NSg/V   NPl/V   J/P NPl/V   V/J      NPrSg/V/J/P
 > design , specification , programming , verification , implementation and testing of
-# NSg/V  . NSg           . NSg/V       . NSg          . NSg            V/C V       P
+# NSg/V  . NSg           . NSg/V/Br    . NSg          . NSg            V/C V       P
 > human   - made  computing systems .
 # NSg/V/J . NSg/V NSg/V     NPl     .
 >
@@ -467,7 +467,7 @@
 > computer science : theory of computation , algorithms and data structures ,
 # NSg/V    NSg/V   . NSg    P  NSg         . NPl        V/C NSg  NPl/V      .
 > programming methodology and languages , and computer elements and architecture .
-# NSg/V       NSg         V/C NPl/V     . V/C NSg/V    NPl/V    V/C NSg          .
+# NSg/V/Br    NSg         V/C NPl/V     . V/C NSg/V    NPl/V    V/C NSg          .
 > In          addition to these four areas , CSAB also identifies fields  such  as    software
 # NPrSg/V/J/P NSg      P  I/D   NSg  NPl   . ?    W?   V          NPrPl/V NSg/I NSg/R NSg
 > engineering , artificial intelligence , computer networking and communication ,
@@ -559,15 +559,15 @@
 >
 #
 > Programming language theory and formal methods
-# NSg/V       NSg/V    NSg    V/C NSg/J  NPl/V
+# NSg/V/Br    NSg/V    NSg    V/C NSg/J  NPl/V
 >
 #
 > Programming language theory is a   branch of computer science that    deals with the
-# NSg/V       NSg/V    NSg    VL D/P NPrSg  P  NSg/V    NSg/V   N/I/C/D NPl/V P    D
+# NSg/V/Br    NSg/V    NSg    VL D/P NPrSg  P  NSg/V    NSg/V   N/I/C/D NPl/V P    D
 > design , implementation , analysis , characterization , and classification of
 # NSg    . NSg            . NSg      . NSg              . V/C NSg            P
 > programming languages and their individual features . It        falls within the
-# NSg/V       NPl/V     V/C D     NSg/J      NPl/V    . NPrSg/ISg NPl/V N/J/P  D
+# NSg/V/Br    NPl/V     V/C D     NSg/J      NPl/V    . NPrSg/ISg NPl/V N/J/P  D
 > discipline of computer science , both depending on  and affecting mathematics ,
 # NSg        P  NSg/V    NSg/V   . I/C  V         J/P V/C V/J       NSg         .
 > software engineering , and linguistics . It        is an  active research area , with
@@ -969,7 +969,7 @@
 > Boehm's and Jacopini's insight can      be     further simplified with the use of
 # ?       V/C ?          NSg     NPrSg/VX NSg/VX V/J     V/J        P    D   NSg P
 > goto ( which means it        is more        elementary than structured programming ) .
-# ?    . I/C   NPl/V NPrSg/ISg VL NPrSg/I/V/J NSg/J      C/P  V/J        NSg/V       . .
+# ?    . I/C   NPl/V NPrSg/ISg VL NPrSg/I/V/J NSg/J      C/P  V/J        NSg/V/Br    . .
 >
 #
 >
@@ -977,13 +977,13 @@
 >
 #
 > Programming paradigms
-# NSg/V       NPl
+# NSg/V/Br    NPl
 >
 #
 > Programming languages can      be     used to accomplish different tasks in          different
-# NSg/V       NPl/V     NPrSg/VX NSg/VX V/J  P  V          NSg/J     NPl/V NPrSg/V/J/P NSg/J
+# NSg/V/Br    NPl/V     NPrSg/VX NSg/VX V/J  P  V          NSg/J     NPl/V NPrSg/V/J/P NSg/J
 > ways . Common  programming paradigms include :
-# NPl  . NSg/V/J NSg/V       NPl       NSg/V   .
+# NPl  . NSg/V/J NSg/V/Br    NPl       NSg/V   .
 >
 #
 >
@@ -991,31 +991,31 @@
 >
 #
 > Functional programming , a   style of building the structure and elements of
-# NSg/J      NSg/V       . D/P NSg   P  NSg/V    D   NSg       V/C NPl/V    P
+# NSg/J      NSg/V/Br    . D/P NSg   P  NSg/V    D   NSg       V/C NPl/V    P
 > computer programs that    treats computation as    the evaluation of mathematical
 # NSg/V    NPl/V    N/I/C/D NPl/V  NSg         NSg/R D   NSg        P  J
 > functions and avoids state and mutable data . It        is a   declarative programming
-# NPl/V     V/C V      NSg/V V/C W?      NSg  . NPrSg/ISg VL D/P NSg/J       NSg/V
+# NPl/V     V/C V      NSg/V V/C W?      NSg  . NPrSg/ISg VL D/P NSg/J       NSg/V/Br
 > paradigm , which means programming is done    with expressions or      declarations
-# NSg      . I/C   NPl/V NSg/V       VL NSg/V/J P    NPl         NPrSg/C NPl
+# NSg      . I/C   NPl/V NSg/V/Br    VL NSg/V/J P    NPl         NPrSg/C NPl
 > instead of statements .
 # W?      P  NPl/V      .
 >
 #
 > Imperative programming , a   programming paradigm that    uses  statements that
-# NSg/J      NSg/V       . D/P NSg         NSg      N/I/C/D NPl/V NPl/V      N/I/C/D
+# NSg/J      NSg/V/Br    . D/P NSg/Br      NSg      N/I/C/D NPl/V NPl/V      N/I/C/D
 > change a   program's state . In          much  the same way   that    the imperative mood in
 # NSg/V  D/P N$        NSg/V . NPrSg/V/J/P N/I/J D   I/J  NSg/J N/I/C/D D   NSg/J      NSg  NPrSg/V/J/P
 > natural languages expresses commands , an  imperative program consists of
 # NSg/J   NPl/V     NPl/V     NPl/V    . D/P NSg/J      NPrSg/V NPl/V    P
 > commands for the computer to perform . Imperative programming focuses on
-# NPl/V    C/P D   NSg      P  V       . NSg/J      NSg/V       NPl/V   J/P
+# NPl/V    C/P D   NSg      P  V       . NSg/J      NSg/V/Br    NPl/V   J/P
 > describing how   a   program operates .
 # V          NSg/C D/P NPrSg   V        .
 >
 #
 > Object - oriented programming , a   programming paradigm based on the concept of
-# NSg/V  . V/J      NSg/V       . D/P NSg         NSg      V/J   P  D   NSg     P
+# NSg/V  . V/J      NSg/V/Br    . D/P NSg/Br      NSg      V/J   P  D   NSg     P
 > " objects " , which may      contain data , in the form of fields  , often known   as
 # . NPl/V   . . I/C   NPrSg/VX V       NSg  . P  D   NSg  P  NPrPl/V . J     NSg/V/J NSg/R
 > attributes ; and code  , in the form of procedures , often known   as    methods . A
@@ -1031,7 +1031,7 @@
 >
 #
 > Service - oriented programming , a   programming paradigm that    uses  " services " as
-# NSg/V   . V/J      NSg/V       . D/P NSg         NSg      N/I/C/D NPl/V . NPl/V    . NSg/R
+# NSg/V   . V/J      NSg/V/Br    . D/P NSg/Br      NSg      N/I/C/D NPl/V . NPl/V    . NSg/R
 > the unit of computer work  , to design and implement integrated business
 # D   NSg  P  NSg/V    NSg/V . P  NSg/V  V/C NSg/V     V/J        NSg/J
 > applications and mission critical software programs .

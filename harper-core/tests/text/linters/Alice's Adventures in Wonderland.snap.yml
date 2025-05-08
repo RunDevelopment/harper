@@ -102,9 +102,9 @@ Message: |
       55 | centre of the earth. Let me see: that would be four thousand miles down, I
          | ^~~~~~ Did you mean to spell `centre` this way?
 Suggest:
-  - Replace with: “centred”
-  - Replace with: “centres”
   - Replace with: “censure”
+  - Replace with: “cent”
+  - Replace with: “cent's”
 
 
 
@@ -326,8 +326,8 @@ Message: |
      139 | custard, pine-apple, roast turkey, toffee, and hot buttered toast,) she very
 Suggest:
   - Replace with: “flavor”
-  - Replace with: “flavours”
   - Replace with: “favor”
+  - Replace with: “flour”
 
 
 
@@ -782,6 +782,18 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
+     387 | driest thing I know. Silence all round, if you please! ‘William the Conqueror,
+     388 | whose cause was favoured by the pope, was soon submitted to by the English, who
+         |                 ^~~~~~~~ Did you mean to spell `favoured` this way?
+Suggest:
+  - Replace with: “favored”
+  - Replace with: “flavored”
+  - Replace with: “floured”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
      390 | Edwin and Morcar, the earls of Mercia and Northumbria—’”
          |           ^~~~~~ Did you mean to spell `Morcar` this way?
 Suggest:
@@ -1049,8 +1061,8 @@ Message: |
          | ^~~~~~ Did you mean to spell `honour` this way?
 Suggest:
   - Replace with: “honor”
-  - Replace with: “honours”
-  - Replace with: “honour's”
+  - Replace with: “hour”
+  - Replace with: “honer”
 
 
 
@@ -1060,8 +1072,8 @@ Message: |
          |                         ^~~~~~ Did you mean to spell `honour` this way?
 Suggest:
   - Replace with: “honor”
-  - Replace with: “honours”
-  - Replace with: “honour's”
+  - Replace with: “hour”
+  - Replace with: “honer”
 
 
 
@@ -1082,8 +1094,8 @@ Message: |
          |                     ^~~~~~ Did you mean to spell `honour` this way?
 Suggest:
   - Replace with: “honor”
-  - Replace with: “honours”
-  - Replace with: “honour's”
+  - Replace with: “hour”
+  - Replace with: “honer”
 
 
 
@@ -1093,8 +1105,8 @@ Message: |
          |                                            ^~~~~~ Did you mean to spell `honour` this way?
 Suggest:
   - Replace with: “honor”
-  - Replace with: “honours”
-  - Replace with: “honour's”
+  - Replace with: “hour”
+  - Replace with: “honer”
 
 
 
@@ -1713,7 +1725,6 @@ Message: |
 Suggest:
   - Replace with: “quarreled”
   - Replace with: “quarreler”
-  - Replace with: “quarrellers”
 
 
 
@@ -1850,8 +1861,8 @@ Message: |
          |                              ^~~~~~~~~~ Did you mean to spell `recognised` this way?
 Suggest:
   - Replace with: “recognized”
-  - Replace with: “recogniser”
-  - Replace with: “recognises”
+  - Replace with: “recognize”
+  - Replace with: “recognizer”
 
 
 
@@ -2217,8 +2228,7 @@ Message: |
          |               ^~~~~~~~~ Did you mean to spell `favourite` this way?
 Suggest:
   - Replace with: “favorite”
-  - Replace with: “favourites”
-  - Replace with: “favourite's”
+  - Replace with: “favorites”
 
 
 
@@ -3299,8 +3309,7 @@ Message: |
          |                ^~~~~~~~~ Did you mean to spell `neighbour` this way?
 Suggest:
   - Replace with: “neighbor”
-  - Replace with: “neighbours”
-  - Replace with: “neighbour's”
+  - Replace with: “neighbors”
 
 
 
@@ -3577,6 +3586,17 @@ Message: |
 
 Lint:    Spelling (63 priority)
 Message: |
+    2972 | The long grass rustled at her feet as the White Rabbit hurried by—the frightened
+    2973 | Mouse splashed his way through the neighbouring pool—she could hear the rattle
+         |                                    ^~~~~~~~~~~~ Did you mean `neighboring`?
+    2974 | of the teacups as the March Hare and his friends shared their never-ending meal,
+Suggest:
+  - Replace with: “neighboring”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
     2977 | plates and dishes crashed around it—once more the shriek of the Gryphon, the
          |                                                                 ^~~~~~~ Did you mean `Krypton`?
     2978 | squeaking of the Lizard’s slate-pencil, and the choking of the suppressed
@@ -3625,8 +3645,8 @@ Message: |
     2989 | farm-yard—while the lowing of the cattle in the distance would take the place of
 Suggest:
   - Replace with: “clamor”
-  - Replace with: “clamours”
   - Replace with: “glamour”
+  - Replace with: “clamber”
 
 
 

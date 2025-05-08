@@ -32,7 +32,7 @@ Message: |
 Suggest:
   - Replace with: “amour”
   - Replace with: “armor”
-  - Replace with: “armours”
+  - Replace with: “arbor”
 
 
 
@@ -91,8 +91,8 @@ Message: |
          |           ^~~~~~~~~~ Did you mean to spell `travelling` this way?
 Suggest:
   - Replace with: “traveling”
-  - Replace with: “travellings”
-  - Replace with: “travelling's”
+  - Replace with: “travailing”
+  - Replace with: “travelings”
 
 
 
@@ -102,6 +102,17 @@ Message: |
          |                     ^~~~~ Did you mean `and in`?
 Suggest:
   - Replace with: “and in”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+     249 | The bullet is about five centimetres in.
+         |                          ^~~~~~~~~~~ Did you mean to spell `centimetres` this way?
+Suggest:
+  - Replace with: “centimeter's”
+  - Replace with: “centimeters”
+  - Replace with: “centimeter”
 
 
 
@@ -129,11 +140,22 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      258 | I need to keep in with the neighbours in case I ever need a favour from them.
+         |                            ^~~~~~~~~~ Did you mean to spell `neighbours` this way?
+Suggest:
+  - Replace with: “neighbors”
+  - Replace with: “neighbor's”
+  - Replace with: “neighbor”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+     258 | I need to keep in with the neighbours in case I ever need a favour from them.
          |                                                             ^~~~~~ Did you mean to spell `favour` this way?
 Suggest:
   - Replace with: “favor”
-  - Replace with: “favours”
   - Replace with: “famous”
+  - Replace with: “flavor”
 
 
 
@@ -162,8 +184,7 @@ Message: |
          |      ^~~~~~~~~ Did you mean to spell `behaviour` this way?
 Suggest:
   - Replace with: “behavior”
-  - Replace with: “behaviours”
-  - Replace with: “behaviour's”
+  - Replace with: “behaviors”
 
 
 
@@ -181,9 +202,9 @@ Message: |
      300 | That TV programme that you wanted to watch is on now.
          |         ^~~~~~~~~ Did you mean to spell `programme` this way?
 Suggest:
-  - Replace with: “programmed”
-  - Replace with: “programmer”
-  - Replace with: “programmes”
+  - Replace with: “program”
+  - Replace with: “program's”
+  - Replace with: “programs”
 
 
 
@@ -282,7 +303,7 @@ Message: |
 Suggest:
   - Replace with: “criticism”
   - Replace with: “criticize”
-  - Replace with: “criticised”
+  - Replace with: “critic's”
 
 
 
