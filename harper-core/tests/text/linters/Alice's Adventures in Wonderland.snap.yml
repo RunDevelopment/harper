@@ -88,11 +88,9 @@ Message: |
 Lint:    Spelling (63 priority)
 Message: |
       43 | shelves as she passed; it was labelled “ORANGE MARMALADE”, but to her great
-         |                               ^~~~~~~~ Did you mean to spell “labelled” this way?
+         |                               ^~~~~~~~ Did you mean “labeled”?
 Suggest:
   - Replace with: “labeled”
-  - Replace with: “labeler”
-  - Replace with: “labelless”
 
 
 
@@ -100,11 +98,9 @@ Lint:    Spelling (63 priority)
 Message: |
       54 | I’ve fallen by this time?” she said aloud. “I must be getting somewhere near the
       55 | centre of the earth. Let me see: that would be four thousand miles down, I
-         | ^~~~~~ Did you mean to spell “centre” this way?
+         | ^~~~~~ Did you mean “center”?
 Suggest:
-  - Replace with: “centred”
-  - Replace with: “centres”
-  - Replace with: “censure”
+  - Replace with: “center”
 
 
 
@@ -1688,12 +1684,10 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
     1497 | The Hatter shook his head mournfully. “Not I!” he replied. “We quarrelled last
-         |                                                                ^~~~~~~~~~ Did you mean to spell “quarrelled” this way?
+         |                                                                ^~~~~~~~~~ Did you mean “quarreled”?
     1498 | March—just before he went mad, you know—” (pointing with his tea spoon at the
 Suggest:
   - Replace with: “quarreled”
-  - Replace with: “quarreler”
-  - Replace with: “quarrellers”
 
 
 

@@ -108,6 +108,75 @@ pub(crate) fn is_sz_misspelling(a: &[char], b: &[char]) -> bool {
     found_sz
 }
 
+/// Returns whether the two words are the same, expect that one is written
+/// with '-er' and the other with '-re'.
+///
+/// E.g. "meter" and "metre"
+pub(crate) fn is_er_misspelling(a: &[char], b: &[char]) -> bool {
+    if a.len() != b.len() || a.len() <= 4 {
+        return false;
+    }
+
+    let len = a.len();
+    let a_suffix = [&a[len - 2], &a[len - 1]].map(char::to_ascii_lowercase);
+    let b_suffix = [&b[len - 2], &b[len - 1]].map(char::to_ascii_lowercase);
+
+    if a_suffix == ['r', 'e'] && b_suffix == ['e', 'r']
+        || a_suffix == ['e', 'r'] && b_suffix == ['r', 'e']
+    {
+        return a[0..len - 2]
+            .iter()
+            .copied()
+            .zip(b[0..len - 2].iter().copied())
+            .all(|(a_char, b_char)| a_char.eq_ignore_ascii_case(&b_char));
+    }
+
+    false
+}
+
+/// Returns whether the two words are the same, expect that one is written
+/// with 'll' and the other with 'l'.
+///
+/// E.g. "traveller" and "traveler"
+pub(crate) fn is_ll_misspelling(a: &[char], b: &[char]) -> bool {
+    if a.len().abs_diff(b.len()) != 1 {
+        return false;
+    }
+
+    let mut a_iter = a.iter();
+    let mut b_iter = b.iter();
+
+    loop {
+        match (
+            a_iter.next().map(char::to_ascii_lowercase),
+            b_iter.next().map(char::to_ascii_lowercase),
+        ) {
+            (Some('l'), Some('l')) => {
+                let mut a_next = a_iter.next().map(char::to_ascii_lowercase);
+                let mut b_next = b_iter.next().map(char::to_ascii_lowercase);
+                if a_next != b_next {
+                    if a_next == Some('l') {
+                        a_next = a_iter.next().map(char::to_ascii_lowercase);
+                    } else if b_next == Some('l') {
+                        b_next = b_iter.next().map(char::to_ascii_lowercase);
+                    }
+
+                    if a_next != b_next {
+                        return false;
+                    }
+                }
+            }
+            (Some(a_char), Some(b_char)) => {
+                if !a_char.eq_ignore_ascii_case(&b_char) {
+                    return false;
+                }
+            }
+            (None, None) => return true,
+            _ => return false,
+        }
+    }
+}
+
 /// Scores a possible spelling suggestion based on possible relevance to the user.
 ///
 /// Lower = better.
@@ -143,13 +212,15 @@ fn score_suggestion(misspelled_word: &[char], sug: &FuzzyMatchResult) -> i32 {
     }
 
     // Detect dialect-specific variations
-    if sug.edit_distance == 1 {
-        if is_sz_misspelling(misspelled_word, sug.word) {
-            // This is a common dialect difference.
-            score -= 5;
-        } else if is_ou_misspelling(misspelled_word, sug.word) {
-            score -= 5;
-        }
+    if sug.edit_distance == 1
+        && (is_sz_misspelling(misspelled_word, sug.word)
+            || is_ou_misspelling(misspelled_word, sug.word)
+            || is_ll_misspelling(misspelled_word, sug.word))
+    {
+        score -= 5;
+    }
+    if sug.edit_distance == 2 && is_er_misspelling(misspelled_word, sug.word) {
+        score -= 15;
     }
 
     score

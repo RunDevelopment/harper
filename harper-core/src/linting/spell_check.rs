@@ -6,7 +6,10 @@ use smallvec::ToSmallVec;
 use super::Suggestion;
 use super::{Lint, LintKind, Linter};
 use crate::document::Document;
-use crate::spell::{is_ou_misspelling, is_sz_misspelling, suggest_correct_spelling};
+use crate::spell::{
+    is_er_misspelling, is_ll_misspelling, is_ou_misspelling, is_sz_misspelling,
+    suggest_correct_spelling,
+};
 use crate::{CharString, CharStringExt, Dialect, Dictionary, TokenStringExt};
 
 pub struct SpellCheck<T>
@@ -87,6 +90,8 @@ impl<T: Dictionary> Linter for SpellCheck<T> {
                 // If the most likely suggestion is a common misspelling, ignore all others.
                 if is_ou_misspelling(most_likely, word_chars)
                     || is_sz_misspelling(most_likely, word_chars)
+                    || is_er_misspelling(most_likely, word_chars)
+                    || is_ll_misspelling(most_likely, word_chars)
                 {
                     possibilities.truncate(1);
                 }

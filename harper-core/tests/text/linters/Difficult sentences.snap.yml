@@ -86,11 +86,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      208 | My aim in travelling there was to find my missing friend.
-         |           ^~~~~~~~~~ Did you mean to spell “travelling” this way?
+         |           ^~~~~~~~~~ Did you mean “traveling”?
 Suggest:
   - Replace with: “traveling”
-  - Replace with: “travellings”
-  - Replace with: “travelling's”
 
 
 
@@ -252,11 +250,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      366 | He travelled on false documents.
-         |    ^~~~~~~~~ Did you mean to spell “travelled” this way?
+         |    ^~~~~~~~~ Did you mean “traveled”?
 Suggest:
   - Replace with: “traveled”
-  - Replace with: “traveler”
-  - Replace with: “travailed”
 
 
 

@@ -20,3 +20,7 @@
 # ISg V       NSg/C IPl V           NPrSg/ISg .
 > I   analyse how   you infantilise me        .
 # ISg V/Br    NSg/C IPl ?           NPrSg/ISg .
+> Careful , traveller !
+# J       . NSg/Br    .
+> At the centre of the theatre I   dropped a   litre  of coke    .
+# P  D   NSg/Br P  D   NSg/Br  ISg V/J     D/P NSg/Br P  NPrSg/V .

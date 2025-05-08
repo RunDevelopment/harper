@@ -54,3 +54,39 @@ Suggest:
 
 
 
+Lint:    Spelling (63 priority)
+Message: |
+      12 | Careful, traveller!
+         |          ^~~~~~~~~ Did you mean “traveler”?
+Suggest:
+  - Replace with: “traveler”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+      13 | At the centre of the theatre I dropped a litre of coke.
+         |        ^~~~~~ Did you mean “center”?
+Suggest:
+  - Replace with: “center”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+      13 | At the centre of the theatre I dropped a litre of coke.
+         |                      ^~~~~~~ Did you mean “theater”?
+Suggest:
+  - Replace with: “theater”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+      13 | At the centre of the theatre I dropped a litre of coke.
+         |                                          ^~~~~ Did you mean “liter”?
+Suggest:
+  - Replace with: “liter”
+
+
+
