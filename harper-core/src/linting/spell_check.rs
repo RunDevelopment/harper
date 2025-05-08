@@ -41,7 +41,7 @@ impl<T: Dictionary> SpellCheck<T> {
     fn uncached_suggest_correct_spelling(&self, word: &[char]) -> Vec<CharString> {
         // Back off until we find a match.
         for dist in 2..5 {
-            let mut suggestions: Vec<CharString> =
+            let suggestions: Vec<CharString> =
                 suggest_correct_spelling(word, 100, dist, &self.dictionary)
                     .into_iter()
                     .filter(|v| {
@@ -53,13 +53,10 @@ impl<T: Dictionary> SpellCheck<T> {
                             .is_none_or(|d| d == self.dialect)
                     })
                     .map(|v| v.to_smallvec())
+                    .take(Self::MAX_SUGGESTIONS)
                     .collect();
 
             if !suggestions.is_empty() {
-                if suggestions.len() > Self::MAX_SUGGESTIONS {
-                    suggestions.resize_with(Self::MAX_SUGGESTIONS, || panic!());
-                }
-
                 return suggestions;
             }
         }
