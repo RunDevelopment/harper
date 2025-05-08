@@ -28,11 +28,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       56 | He was protected by his body armour.
-         |                              ^~~~~~ Did you mean to spell “armour” this way?
+         |                              ^~~~~~ Did you mean “armor”?
 Suggest:
-  - Replace with: “amour”
   - Replace with: “armor”
-  - Replace with: “armours”
 
 
 
@@ -129,11 +127,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      258 | I need to keep in with the neighbours in case I ever need a favour from them.
-         |                                                             ^~~~~~ Did you mean to spell “favour” this way?
+         |                                                             ^~~~~~ Did you mean “favor”?
 Suggest:
   - Replace with: “favor”
-  - Replace with: “favours”
-  - Replace with: “famous”
 
 
 
@@ -150,11 +146,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      284 | This behaviour is typical of teenagers.
-         |      ^~~~~~~~~ Did you mean to spell “behaviour” this way?
+         |      ^~~~~~~~~ Did you mean “behavior”?
 Suggest:
   - Replace with: “behavior”
-  - Replace with: “behaviours”
-  - Replace with: “behaviour's”
 
 
 
@@ -269,11 +263,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
      398 | Who am I to criticise? I've done worse things myself.
-         |             ^~~~~~~~~ Did you mean to spell “criticise” this way?
+         |             ^~~~~~~~~ Did you mean “criticize”?
 Suggest:
-  - Replace with: “criticism”
   - Replace with: “criticize”
-  - Replace with: “criticised”
 
 
 

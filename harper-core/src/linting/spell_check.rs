@@ -6,7 +6,7 @@ use smallvec::ToSmallVec;
 use super::Suggestion;
 use super::{Lint, LintKind, Linter};
 use crate::document::Document;
-use crate::spell::suggest_correct_spelling;
+use crate::spell::{is_ou_misspelling, is_sz_misspelling, suggest_correct_spelling};
 use crate::{CharString, CharStringExt, Dialect, Dictionary, TokenStringExt};
 
 pub struct SpellCheck<T>
@@ -26,39 +26,46 @@ impl<T: Dictionary> SpellCheck<T> {
             dialect,
         }
     }
-}
 
-impl<T: Dictionary> SpellCheck<T> {
-    fn cached_suggest_correct_spelling(&mut self, word: &[char]) -> Vec<CharString> {
+    const MAX_SUGGESTIONS: usize = 3;
+
+    fn suggest_correct_spelling(&mut self, word: &[char]) -> Vec<CharString> {
         if let Some(hit) = self.word_cache.get(word) {
-            return hit.clone();
+            hit.clone()
+        } else {
+            let suggestions = self.uncached_suggest_correct_spelling(word);
+            self.word_cache.put(word.into(), suggestions.clone());
+            suggestions
         }
-
+    }
+    fn uncached_suggest_correct_spelling(&self, word: &[char]) -> Vec<CharString> {
         // Back off until we find a match.
-        let mut suggestions = Vec::new();
-        let mut dist = 2;
+        for dist in 2..5 {
+            let mut suggestions: Vec<CharString> =
+                suggest_correct_spelling(word, 100, dist, &self.dictionary)
+                    .into_iter()
+                    .filter(|v| {
+                        // ignore entries outside the configured dialect
+                        self.dictionary
+                            .get_word_metadata(v)
+                            .unwrap()
+                            .dialect
+                            .is_none_or(|d| d == self.dialect)
+                    })
+                    .map(|v| v.to_smallvec())
+                    .collect();
 
-        while suggestions.is_empty() && dist < 5 {
-            suggestions = suggest_correct_spelling(word, 100, dist, &self.dictionary)
-                .into_iter()
-                .map(|v| v.to_smallvec())
-                .collect();
+            if !suggestions.is_empty() {
+                if suggestions.len() > Self::MAX_SUGGESTIONS {
+                    suggestions.resize_with(Self::MAX_SUGGESTIONS, || panic!());
+                }
 
-            dist += 1;
+                return suggestions;
+            }
         }
 
-        // Remove entries outside the configured dialect
-        suggestions.retain(|v| {
-            self.dictionary
-                .get_word_metadata(v)
-                .unwrap()
-                .dialect
-                .is_none_or(|d| d == self.dialect)
-        });
-
-        self.word_cache.put(word.into(), suggestions.clone());
-
-        suggestions
+        // no suggestions found
+        Vec::new()
     }
 }
 
@@ -78,10 +85,14 @@ impl<T: Dictionary> Linter for SpellCheck<T> {
                 }
             };
 
-            let mut possibilities = self.cached_suggest_correct_spelling(word_chars);
-
-            if possibilities.len() > 3 {
-                possibilities.resize_with(3, || panic!());
+            let mut possibilities = self.suggest_correct_spelling(word_chars);
+            if let Some(most_likely) = possibilities.first() {
+                // If the most likely suggestion is a common misspelling, ignore all others.
+                if is_ou_misspelling(most_likely, word_chars)
+                    || is_sz_misspelling(most_likely, word_chars)
+                {
+                    possibilities.truncate(1);
+                }
             }
 
             // If the misspelled word is capitalized, capitalize the results too.

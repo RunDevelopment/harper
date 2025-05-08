@@ -1516,7 +1516,7 @@ Message: |
 Suggest:
   - Replace with: “hers”
   - Replace with: “ho's”
-  - Replace with: “hobs”
+  - Replace with: “hours”
 
 
 
@@ -3097,11 +3097,9 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
     2011 | “Major Jay Gatsby,” I read, “For Valour Extraordinary.”
-         |                                  ^~~~~~ Did you mean to spell “Valour” this way?
+         |                                  ^~~~~~ Did you mean “Valor”?
 Suggest:
   - Replace with: “Valor”
-  - Replace with: “Valium”
-  - Replace with: “Valois”
 
 
 

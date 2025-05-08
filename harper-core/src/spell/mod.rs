@@ -27,6 +27,87 @@ impl PartialOrd for FuzzyMatchResult<'_> {
     }
 }
 
+/// Returns whether the two words are the same, expect that one is written
+/// with 'ou' and the other with 'o'.
+///
+/// E.g. "color" and "colour"
+pub(crate) fn is_ou_misspelling(a: &[char], b: &[char]) -> bool {
+    if a.len().abs_diff(b.len()) != 1 {
+        return false;
+    }
+
+    let mut a_iter = a.iter();
+    let mut b_iter = b.iter();
+
+    loop {
+        match (
+            a_iter.next().map(char::to_ascii_lowercase),
+            b_iter.next().map(char::to_ascii_lowercase),
+        ) {
+            (Some('o'), Some('o')) => {
+                let mut a_next = a_iter.next().map(char::to_ascii_lowercase);
+                let mut b_next = b_iter.next().map(char::to_ascii_lowercase);
+                if a_next != b_next {
+                    if a_next == Some('u') {
+                        a_next = a_iter.next().map(char::to_ascii_lowercase);
+                    } else if b_next == Some('u') {
+                        b_next = b_iter.next().map(char::to_ascii_lowercase);
+                    }
+
+                    if a_next != b_next {
+                        return false;
+                    }
+                }
+            }
+            (Some(a_char), Some(b_char)) => {
+                if !a_char.eq_ignore_ascii_case(&b_char) {
+                    return false;
+                }
+            }
+            (None, None) => return true,
+            _ => return false,
+        }
+    }
+}
+
+/// Returns whether the two words are the same, expect that one is written
+/// with 's' and the other with 'z'.
+///
+/// E.g. "realize" and "realise"
+pub(crate) fn is_sz_misspelling(a: &[char], b: &[char]) -> bool {
+    if a.len() != b.len() {
+        return false;
+    }
+    if a.is_empty() {
+        return true;
+    }
+
+    // the first character must be the same
+    if !a[0].eq_ignore_ascii_case(&b[0]) {
+        return false;
+    }
+
+    let mut found_sz = false;
+    for (a_char, b_char) in a.iter().copied().zip(b.iter().copied()) {
+        let a_char = a_char.to_ascii_lowercase();
+        let b_char = b_char.to_ascii_lowercase();
+
+        if a_char != b_char {
+            if (a_char == 's' && b_char == 'z') || (a_char == 'z' && b_char == 's') {
+                if found_sz {
+                    // 2 or more 's' or 'z' confusions
+                    return false;
+                }
+                found_sz = true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    found_sz
+}
+
 /// Scores a possible spelling suggestion based on possible relevance to the user.
 ///
 /// Lower = better.
@@ -51,7 +132,7 @@ fn score_suggestion(misspelled_word: &[char], sug: &FuzzyMatchResult) -> i32 {
         score -= 5;
     }
 
-    // For turning words into contractions.
+    // Boost common words.
     if sug.metadata.common {
         score -= 5;
     }
@@ -59,6 +140,16 @@ fn score_suggestion(misspelled_word: &[char], sug: &FuzzyMatchResult) -> i32 {
     // For turning words into contractions.
     if sug.word.iter().filter(|c| **c == '\'').count() == 1 {
         score -= 5;
+    }
+
+    // Detect dialect-specific variations
+    if sug.edit_distance == 1 {
+        if is_sz_misspelling(misspelled_word, sug.word) {
+            // This is a common dialect difference.
+            score -= 5;
+        } else if is_ou_misspelling(misspelled_word, sug.word) {
+            score -= 5;
+        }
     }
 
     score

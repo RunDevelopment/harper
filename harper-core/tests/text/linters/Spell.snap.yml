@@ -1,0 +1,56 @@
+Lint:    Spelling (63 priority)
+Message: |
+       7 | My favourite color is blu.
+         |    ^~~~~~~~~ Did you mean “favorite”?
+Suggest:
+  - Replace with: “favorite”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+       7 | My favourite color is blu.
+         |                       ^~~ Did you mean to spell “blu” this way?
+Suggest:
+  - Replace with: “bl”
+  - Replace with: “blue”
+  - Replace with: “blur”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+       8 | I must defend my honour!
+         |                  ^~~~~~ Did you mean “honor”?
+Suggest:
+  - Replace with: “honor”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+       9 | I recognize that you recognise me.
+         |                      ^~~~~~~~~ Did you mean “recognize”?
+Suggest:
+  - Replace with: “recognize”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+      11 | I analyse how you infantilise me.
+         |   ^~~~~~~ Did you mean “analyze”?
+Suggest:
+  - Replace with: “analyze”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+      11 | I analyse how you infantilise me.
+         |                   ^~~~~~~~~~~ Did you mean “infantilize”?
+Suggest:
+  - Replace with: “infantilize”
+
+
+
