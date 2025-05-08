@@ -1,7 +1,7 @@
 Lint:    Spelling (63 priority)
 Message: |
        7 | My favourite color is blu.
-         |    ^~~~~~~~~ Did you mean “favorite”?
+         |    ^~~~~~~~~ Did you mean `favorite`?
 Suggest:
   - Replace with: “favorite”
 
@@ -10,7 +10,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
        7 | My favourite color is blu.
-         |                       ^~~ Did you mean to spell “blu” this way?
+         |                       ^~~ Did you mean to spell `blu` this way?
 Suggest:
   - Replace with: “bl”
   - Replace with: “blue”
@@ -21,7 +21,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
        8 | I must defend my honour!
-         |                  ^~~~~~ Did you mean “honor”?
+         |                  ^~~~~~ Did you mean `honor`?
 Suggest:
   - Replace with: “honor”
 
@@ -30,7 +30,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
        9 | I recognize that you recognise me.
-         |                      ^~~~~~~~~ Did you mean “recognize”?
+         |                      ^~~~~~~~~ Did you mean `recognize`?
 Suggest:
   - Replace with: “recognize”
 
@@ -39,7 +39,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       11 | I analyse how you infantilise me.
-         |   ^~~~~~~ Did you mean “analyze”?
+         |   ^~~~~~~ Did you mean `analyze`?
 Suggest:
   - Replace with: “analyze”
 
@@ -48,7 +48,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       11 | I analyse how you infantilise me.
-         |                   ^~~~~~~~~~~ Did you mean “infantilize”?
+         |                   ^~~~~~~~~~~ Did you mean `infantilize`?
 Suggest:
   - Replace with: “infantilize”
 
@@ -57,7 +57,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       12 | Careful, traveller!
-         |          ^~~~~~~~~ Did you mean “traveler”?
+         |          ^~~~~~~~~ Did you mean `traveler`?
 Suggest:
   - Replace with: “traveler”
 
@@ -66,7 +66,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       13 | At the centre of the theatre I dropped a litre of coke.
-         |        ^~~~~~ Did you mean “center”?
+         |        ^~~~~~ Did you mean `center`?
 Suggest:
   - Replace with: “center”
 
@@ -75,7 +75,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       13 | At the centre of the theatre I dropped a litre of coke.
-         |                      ^~~~~~~ Did you mean “theater”?
+         |                      ^~~~~~~ Did you mean `theater`?
 Suggest:
   - Replace with: “theater”
 
@@ -84,7 +84,7 @@ Suggest:
 Lint:    Spelling (63 priority)
 Message: |
       13 | At the centre of the theatre I dropped a litre of coke.
-         |                                          ^~~~~ Did you mean “liter”?
+         |                                          ^~~~~ Did you mean `liter`?
 Suggest:
   - Replace with: “liter”
 
