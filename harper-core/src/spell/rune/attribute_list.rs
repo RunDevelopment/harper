@@ -93,7 +93,7 @@ impl AttributeList {
                     let Some(property) = self.properties.get(attr) else {
                         continue;
                     };
-                    // This looks wrong but matches the old logic: if attr_def.suffix != expansion.suffix
+                    // This is the same logic as below, plus propagation
                     if expansion.kind == Prefix || property.propagate {
                         opp_attr.push(*attr);
                     }
