@@ -454,17 +454,6 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
-     157 | ### Dynamic programming methods
-         |             ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
      159 | In 1987, Steven DeRose and Kenneth W. Church independently developed dynamic
          |                 ^~~~~~ Did you mean to spell `DeRose` this way?
 Suggest:
@@ -482,18 +471,6 @@ Suggest:
   - Replace with: “We”
   - Replace with: “WA”
   - Replace with: “WC”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     159 | In 1987, Steven DeRose and Kenneth W. Church independently developed dynamic
-     160 | programming algorithms to solve the same problem in vastly less time. Their
-         | ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
 
 
 

@@ -1,12 +1,5 @@
 Lint:    Spelling (63 priority)
 Message: |
-      18 | the generation of images. Programming language theory considers different ways
-         |                           ^~~~~~~~~~~ Did you mean to spell `Programming` this way?
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
       45 | Wilhelm Schickard designed and constructed the first working mechanical
          |         ^~~~~~~~~ Did you mean `Schick`?
 Suggest:
@@ -69,28 +62,6 @@ Message: |
 Suggest:
   - Replace with: “arithmetic”
   - Replace with: “anemometer”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-      54 | Engine, in 1822, which eventually gave him the idea of the first programmable
-         |                                                                  ^~~~~~~~~~~~ Did you mean to spell `programmable` this way?
-      55 | mechanical calculator, his Analytical Engine. He started developing this machine
-Suggest:
-  - Replace with: “programmables”
-  - Replace with: “programmable's”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-      58 | card system derived from the Jacquard loom" making it infinitely
-      59 | programmable.[note 2] In 1843, during the translation of a French article on the
-         | ^~~~~~~~~~~~ Did you mean to spell `programmable` this way?
-Suggest:
-  - Replace with: “programmables”
-  - Replace with: “programmable's”
 
 
 
@@ -187,17 +158,6 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       79 | cards and a central computing unit. When the machine was finished, some hailed
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 53 words long.
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-      77 | calculator business to develop his giant programmable calculator, the
-         |                                          ^~~~~~~~~~~~ Did you mean to spell `programmable` this way?
-      78 | ASCC/Harvard Mark I, based on Babbage's Analytical Engine, which itself used
-Suggest:
-  - Replace with: “programmables”
-  - Replace with: “programmable's”
 
 
 
@@ -775,18 +735,6 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
-     208 | computer programs as mathematical sentences and interpret formal semantics for
-     209 | programming languages as mathematical axiomatic systems.
-         | ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
      214 | separate paradigms in computer science. Peter Wegner argued that those paradigms
          |                                               ^~~~~~ Did you mean to spell `Wegner` this way?
      215 | are science, technology, and mathematics. Peter Denning's working group argued
@@ -854,18 +802,6 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
-     223 | artificial intelligence). Computer science focuses on methods involved in
-     224 | design, specification, programming, verification, implementation and testing of
-         |                        ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
      231 | implementing computing systems in hardware and software. CSAB, formerly called
          |                                                          ^~~~ Did you mean to spell `CSAB` this way?
      232 | Computing Sciences Accreditation Board—which is made up of representatives of
@@ -900,18 +836,6 @@ Message: |
      236 | programming methodology and languages, and computer elements and architecture.
 Suggest:
   - Insert “,”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     235 | computer science: theory of computation, algorithms and data structures,
-     236 | programming methodology and languages, and computer elements and architecture.
-         | ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
 
 
 
@@ -980,32 +904,6 @@ Message: |
          |                    ^ This sentence does not start with a capital letter
 Suggest:
   - Replace with: “P”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     282 | #### Programming language theory and formal methods
-         |      ^~~~~~~~~~~ Did you mean to spell `Programming` this way?
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     284 | Programming language theory is a branch of computer science that deals with the
-         | ^~~~~~~~~~~ Did you mean to spell `Programming` this way?
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     285 | design, implementation, analysis, characterization, and classification of
-     286 | programming languages and their individual features. It falls within the
-         | ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
 
 
 
@@ -1308,157 +1206,6 @@ Suggest:
   - Replace with: “got”
   - Replace with: “goo”
   - Replace with: “gore”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     469 |     goto (which means it is more elementary than structured programming).
-         |                                                             ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     471 | ## Programming paradigms
-         |    ^~~~~~~~~~~ Did you mean to spell `Programming` this way?
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     473 | Programming languages can be used to accomplish different tasks in different
-         | ^~~~~~~~~~~ Did you mean to spell `Programming` this way?
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     474 | ways. Common programming paradigms include:
-         |              ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     476 | - Functional programming, a style of building the structure and elements of
-         |              ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     478 |   functions and avoids state and mutable data. It is a declarative programming
-         |                                                                    ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-     479 |   paradigm, which means programming is done with expressions or declarations
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     478 |   functions and avoids state and mutable data. It is a declarative programming
-     479 |   paradigm, which means programming is done with expressions or declarations
-         |                         ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     481 | - Imperative programming, a programming paradigm that uses statements that
-         |              ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     481 | - Imperative programming, a programming paradigm that uses statements that
-         |                             ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     484 |   commands for the computer to perform. Imperative programming focuses on
-         |                                                    ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-     485 |   describing how a program operates.
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     486 | - Object-oriented programming, a programming paradigm based on the concept of
-         |                   ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     486 | - Object-oriented programming, a programming paradigm based on the concept of
-         |                                  ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-     487 |   "objects", which may contain data, in the form of fields, often known as
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     493 | - Service-oriented programming, a programming paradigm that uses "services" as
-         |                    ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     493 | - Service-oriented programming, a programming paradigm that uses "services" as
-         |                                   ^~~~~~~~~~~ Did you mean to spell `programming` this way?
-     494 |   the unit of computer work, to design and implement integrated business
-Suggest:
-  - Replace with: “programming's”
-  - Replace with: “deprogramming”
-  - Replace with: “reprogramming”
 
 
 
