@@ -48,6 +48,7 @@ mod nobody;
 mod number_suffix_capitalization;
 mod of_course;
 mod one_and_the_same;
+mod open_compounds;
 mod out_of_date;
 mod oxford_comma;
 mod oxymorons;
