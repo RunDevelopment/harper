@@ -1,41 +1,61 @@
+use crate::expr::Expr;
+use crate::expr::LongestMatchOf;
+use crate::expr::SequenceExpr;
 use crate::{
     Token,
-    linting::{Lint, LintKind, PatternLinter, Suggestion},
-    patterns::{EitherPattern, SequencePattern, WordSet},
+    linting::{ExprLinter, Lint, LintKind, Suggestion},
+    patterns::WordSet,
 };
 
 pub struct PronounKnew {
-    pattern: Box<dyn crate::patterns::Pattern>,
+    expr: Box<dyn Expr>,
+}
+
+trait PronounKnewExt {
+    fn then_pronoun(self) -> Self;
 }
 
 impl Default for PronounKnew {
     fn default() -> Self {
-        let pronoun_then_new = SequencePattern::default()
-            .then_pronoun()
+        // The pronoun that would occur before a verb would be a subject pronoun.
+        // But "its" commonly occurs before "new" and is a possessive pronoun. (Much more commonly a determiner)
+        // Since "his" and "her" are possessive and object pronouns respectively, we ignore them too.
+        let pronoun_pattern = |tok: &Token, source: &[char]| {
+            if !tok.kind.is_pronoun() {
+                return false;
+            }
+
+            let pronorm = tok.span.get_content_string(source).to_lowercase();
+            let excluded = ["its", "his", "her", "every", "something", "nothing"];
+            !excluded.contains(&&*pronorm)
+        };
+
+        let pronoun_then_new = SequenceExpr::default()
+            .then(pronoun_pattern)
             .then_whitespace()
             .then_any_capitalization_of("new");
 
-        let pronoun_adverb_then_new = SequencePattern::default()
-            .then_pronoun()
+        let pronoun_adverb_then_new = SequenceExpr::default()
+            .then(pronoun_pattern)
             .then_whitespace()
             .then(WordSet::new(&["always", "never", "also", "often"]))
             .then_whitespace()
             .then_any_capitalization_of("new");
 
-        let combined_pattern = EitherPattern::new(vec![
+        let combined_pattern = LongestMatchOf::new(vec![
             Box::new(pronoun_then_new),
             Box::new(pronoun_adverb_then_new),
         ]);
 
         Self {
-            pattern: Box::new(combined_pattern),
+            expr: Box::new(combined_pattern),
         }
     }
 }
 
-impl PatternLinter for PronounKnew {
-    fn pattern(&self) -> &dyn crate::patterns::Pattern {
-        self.pattern.as_ref()
+impl ExprLinter for PronounKnew {
+    fn expr(&self) -> &dyn Expr {
+        self.expr.as_ref()
     }
 
     fn match_to_lint(&self, tokens: &[Token], source: &[char]) -> Option<Lint> {
@@ -91,5 +111,29 @@ mod tests {
     #[test]
     fn does_not_flag_other_context() {
         assert_lint_count("They called it \"new\".", PronounKnew::default(), 0);
+    }
+
+    #[test]
+    fn does_not_flag_with_its() {
+        assert_lint_count(
+            "In 2015, the US was paying on average around 2% for its new issuance bonds.",
+            PronounKnew::default(),
+            0,
+        );
+    }
+
+    #[test]
+    fn does_not_flag_with_his() {
+        assert_lint_count("His new car is fast.", PronounKnew::default(), 0);
+    }
+
+    #[test]
+    fn does_not_flag_with_her() {
+        assert_lint_count("Her new car is fast.", PronounKnew::default(), 0);
+    }
+
+    #[test]
+    fn does_not_flag_with_nothing_1298() {
+        assert_lint_count("This is nothing new.", PronounKnew::default(), 0);
     }
 }

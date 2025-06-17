@@ -18,14 +18,14 @@ pub enum DiagnosticSeverity {
 
 impl DiagnosticSeverity {
     /// Converts `self` to the equivalent LSP type.
-    pub fn to_lsp(self) -> tower_lsp::lsp_types::DiagnosticSeverity {
+    pub fn to_lsp(self) -> tower_lsp_server::lsp_types::DiagnosticSeverity {
         match self {
-            DiagnosticSeverity::Error => tower_lsp::lsp_types::DiagnosticSeverity::ERROR,
-            DiagnosticSeverity::Warning => tower_lsp::lsp_types::DiagnosticSeverity::WARNING,
+            DiagnosticSeverity::Error => tower_lsp_server::lsp_types::DiagnosticSeverity::ERROR,
+            DiagnosticSeverity::Warning => tower_lsp_server::lsp_types::DiagnosticSeverity::WARNING,
             DiagnosticSeverity::Information => {
-                tower_lsp::lsp_types::DiagnosticSeverity::INFORMATION
+                tower_lsp_server::lsp_types::DiagnosticSeverity::INFORMATION
             }
-            DiagnosticSeverity::Hint => tower_lsp::lsp_types::DiagnosticSeverity::HINT,
+            DiagnosticSeverity::Hint => tower_lsp_server::lsp_types::DiagnosticSeverity::HINT,
         }
     }
 }
@@ -65,6 +65,7 @@ impl CodeActionConfig {
 pub struct Config {
     pub user_dict_path: PathBuf,
     pub file_dict_path: PathBuf,
+    pub ignored_lints_path: PathBuf,
     pub stats_path: PathBuf,
     pub lint_config: LintGroupConfig,
     pub diagnostic_severity: DiagnosticSeverity,
@@ -72,6 +73,9 @@ pub struct Config {
     pub isolate_english: bool,
     pub markdown_options: MarkdownOptions,
     pub dialect: Dialect,
+    /// Maximum length (in bytes) a file can have before it's skipped.
+    /// Above this limit, the file will not be linted.
+    pub max_file_length: usize,
 }
 
 impl Config {
@@ -108,6 +112,17 @@ impl Config {
             }
         }
 
+        if let Some(v) = value.get("ignoredLintsPath") {
+            if !v.is_string() {
+                bail!("ignoredLintsPath path must be a string.");
+            }
+
+            let path = v.as_str().unwrap();
+            if !path.is_empty() {
+                base.ignored_lints_path = path.try_resolve()?.to_path_buf();
+            }
+        }
+
         if let Some(v) = value.get("statsPath") {
             if let Value::String(path) = v {
                 base.file_dict_path = path.try_resolve()?.to_path_buf();
@@ -140,6 +155,10 @@ impl Config {
             }
         }
 
+        if let Some(v) = value.get("maxFileLength") {
+            base.max_file_length = serde_json::from_value(v.clone())?;
+        }
+
         if let Some(v) = value.get("markdown") {
             if let Some(v) = v.get("IgnoreLinkTitle") {
                 base.markdown_options.ignore_link_title = serde_json::from_value(v.clone())?;
@@ -157,6 +176,7 @@ impl Default for Config {
             file_dict_path: data_local_dir()
                 .unwrap()
                 .join("harper-ls/file_dictionaries/"),
+            ignored_lints_path: data_local_dir().unwrap().join("harper-ls/ignored_lints/"),
             stats_path: data_local_dir().unwrap().join("harper-ls/stats.txt"),
             lint_config: LintGroupConfig::default(),
             diagnostic_severity: DiagnosticSeverity::Hint,
@@ -164,6 +184,7 @@ impl Default for Config {
             isolate_english: false,
             markdown_options: MarkdownOptions::default(),
             dialect: Dialect::American,
+            max_file_length: 120_000,
         }
     }
 }

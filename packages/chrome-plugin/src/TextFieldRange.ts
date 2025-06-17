@@ -67,15 +67,13 @@ export default class TextFieldRange {
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
 
-		console.log(fieldRect);
-
 		// Position the mirror exactly over the field.
 		Object.assign(this.mirror.style, {
 			top: `${fieldRect.top + scrollTop}px`,
 			left: `${fieldRect.left + scrollLeft}px`,
 			width: `${fieldRect.width}px`,
 			height: `${fieldRect.height}px`,
-			overflow: 'scroll',
+			boxSizing: 'border-box',
 			// For a textarea, use "pre-wrap" (so line-breaks are preserved); for a single‑line input, use "pre"
 			whiteSpace: this.field.tagName.toLowerCase() === 'textarea' ? 'pre-wrap' : 'pre',
 			wordWrap: 'break-word',

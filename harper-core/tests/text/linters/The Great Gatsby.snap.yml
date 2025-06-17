@@ -3,9 +3,9 @@ Message: |
        3 | BY F. SCOTT FITZGERALD
          |    ^~ Did you mean to spell `F.` this way?
 Suggest:
+  - Replace with: “Ft”
+  - Replace with: “F”
   - Replace with: “Fa”
-  - Replace with: “Ff”
-  - Replace with: “Fr”
 
 
 
@@ -14,9 +14,9 @@ Message: |
        3 | BY F. SCOTT FITZGERALD
          |       ^~~~~ Did you mean to spell `SCOTT` this way?
 Suggest:
+  - Replace with: “Scot”
+  - Replace with: “SCM's”
   - Replace with: “SEO's”
-  - Replace with: “Alcott”
-  - Replace with: “Lott”
 
 
 
@@ -33,6 +33,16 @@ Message: |
          |                         ^~~~~~~~~~~ Did you mean `criticizing`?
 Suggest:
   - Replace with: “criticizing”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+      10 | “Whenever you feel like criticising any one,” he told me, “just remember that
+         |                                     ^~~~~~~ Did you mean the closed compound `anyone`?
+      11 | all the people in this world haven’t had the advantages that you’ve had.”
+Suggest:
+  - Replace with: “anyone”
 
 
 
@@ -401,16 +411,6 @@ Message: |
 
 
 
-Lint:    WordChoice (31 priority)
-Message: |
-     136 | powerful ends that ever played football at New Haven—a national figure in a way,
-         |                                            ^~~ Did you mean “knew” (the past tense of “know”)?
-     137 | one of those men who reach such an acute limited excellence at twenty-one that
-Suggest:
-  - Replace with: “Knew”
-
-
-
 Lint:    Readability (127 priority)
 Message: |
      138 | everything afterward savors of anti-climax. His family were enormously
@@ -460,15 +460,6 @@ Message: |
 
 
 
-Lint:    WordChoice (31 priority)
-Message: |
-     162 | He had changed since his New Haven years. Now he was a sturdy straw-haired man
-         |                          ^~~ Did you mean “knew” (the past tense of “know”)?
-Suggest:
-  - Replace with: “Knew”
-
-
-
 Lint:    Readability (127 priority)
 Message: |
      165 | appearance of always leaning aggressively forward. Not even the effeminate swank
@@ -479,15 +470,6 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      168 | a great pack of muscle shifting when his shoulder moved under his thin coat. It
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 48 words long.
-
-
-
-Lint:    WordChoice (31 priority)
-Message: |
-     173 | toward people he liked—and there were men at New Haven who had hated his guts.
-         |                                              ^~~ Did you mean “knew” (the past tense of “know”)?
-Suggest:
-  - Replace with: “Knew”
 
 
 
@@ -591,16 +573,6 @@ Suggest:
 
 
 
-Lint:    Style (63 priority)
-Message: |
-     345 | do it. That’s what I get for marrying a brute of a man, a great, big, hulking
-         |                                         ^~~~~~~~~~ The word `of` is not needed here.
-     346 | physical specimen of a—”’
-Suggest:
-  - Replace with: “brute a”
-
-
-
 Lint:    Spelling (63 priority)
 Message: |
      352 | Sometimes she and Miss Baker talked at once, unobtrusively and with a bantering
@@ -688,6 +660,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+     477 | being lit again, pointlessly, and I was conscious of wanting to look squarely at
+     478 | every one, and yet to avoid all eyes. I couldn’t guess what Daisy and Tom were
+         | ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
      479 | thinking, but I doubt if even Miss Baker, who seemed to have mastered a certain
@@ -710,18 +692,6 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      488 | verandas to the porch in front. In its deep gloom we sat down side by side on a
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 50 words long.
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     487 | interested and a little deaf, I followed Daisy around a chain of connecting
-     488 | verandas to the porch in front. In its deep gloom we sat down side by side on a
-         | ^~~~~~~~ Did you mean to spell `verandas` this way?
-Suggest:
-  - Replace with: “vegan's”
-  - Replace with: “viand's”
-  - Replace with: “vandal”
 
 
 
@@ -777,15 +747,6 @@ Message: |
          |                                                      ^~~~~~~~~ Vocabulary enhancement: use `excellent` instead of `very good`
 Suggest:
   - Replace with: “excellent”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     592 | “Did you give Nick a little heart to heart talk on the veranda?” demanded Tom
-         |                                                        ^~~~~~~ Did you mean `Miranda`?
-Suggest:
-  - Replace with: “Miranda”
 
 
 
@@ -885,7 +846,7 @@ Message: |
 Suggest:
   - Replace with: “To”
   - Replace with: “T”
-  - Replace with: “Ta”
+  - Replace with: “Tb”
 
 
 
@@ -894,9 +855,9 @@ Message: |
      664 | it, you perceive, after a moment, the eyes of Doctor T. J. Eckleburg. The eyes
          |                                                         ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -919,7 +880,7 @@ Message: |
 Suggest:
   - Replace with: “To”
   - Replace with: “T”
-  - Replace with: “Ta”
+  - Replace with: “Tb”
 
 
 
@@ -928,9 +889,9 @@ Message: |
      665 | of Doctor T. J. Eckleburg are blue and gigantic—their retinas are one yard high.
          |              ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -1020,7 +981,7 @@ Message: |
 Suggest:
   - Replace with: “Bu”
   - Replace with: “Be”
-  - Replace with: “Bf”
+  - Replace with: “Bk”
 
 
 
@@ -1043,6 +1004,16 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      706 | door of an office, wiping his hands on a piece of waste. He was a blond,
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 43 words long.
+
+
+
+Lint:    Style (63 priority)
+Message: |
+     703 | dust-covered wreck of a Ford which crouched in a dim corner. It had occurred to
+     704 | me that this shadow of a garage must be a blind, and that sumptuous and romantic
+         |              ^~~~~~~~~~~ The word `of` is not needed here.
+Suggest:
+  - Replace with: “shadow a”
 
 
 
@@ -1104,6 +1075,17 @@ Suggest:
 
 
 
+Lint:    WordChoice (31 priority)
+Message: |
+     731 | nerves of her body were continually smouldering. She smiled slowly and, walking
+     732 | through her husband as if he were a ghost, shook hands with Tom, looking him
+         |                              ^~~~ Use the contraction or separate the words instead.
+Suggest:
+  - Replace with: “we're”
+  - Replace with: “we are”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
      756 | “Terrible place, isn’t it,” said Tom, exchanging a frown with Doctor Eckleburg.
@@ -1133,8 +1115,8 @@ Message: |
          |                                                                       ^~ Did you mean to spell `D.` this way?
 Suggest:
   - Replace with: “D”
+  - Replace with: “Db”
   - Replace with: “Dc”
-  - Replace with: “Do”
 
 
 
@@ -1226,6 +1208,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+     881 | there was a white spot of lather on his cheekbone, and he was most respectful in
+     882 | his greeting to every one in the room. He informed me that he was in the
+         |                 ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
      900 | last week to look at my feet, and when she gave me the bill you’d of thought she
@@ -1304,7 +1296,7 @@ Message: |
 Suggest:
   - Replace with: “Bu”
   - Replace with: “Be”
-  - Replace with: “Bf”
+  - Replace with: “Bk”
 
 
 
@@ -1329,6 +1321,15 @@ Suggest:
   - Replace with: “kike”
   - Replace with: “tyke”
   - Replace with: “dyke”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1062 | She pointed suddenly at me, and every one looked at me accusingly. I tried to
+         |                                 ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
 
 
 
@@ -1393,8 +1394,8 @@ Message: |
          |        ^~~ Did you mean to spell `Dai` this way?
 Suggest:
   - Replace with: “Day”
-  - Replace with: “Dab”
   - Replace with: “Dad”
+  - Replace with: “Dais”
 
 
 
@@ -1571,18 +1572,6 @@ Message: |
 
 Lint:    Spelling (63 priority)
 Message: |
-    1190 | the drive, and already the halls and salons and verandas are gaudy with primary
-         |                                                 ^~~~~~~~ Did you mean to spell `verandas` this way?
-    1191 | colors, and hair bobbed in strange new ways, and shawls beyond the dreams of
-Suggest:
-  - Replace with: “vegan's”
-  - Replace with: “viand's”
-  - Replace with: “vandal”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
     1191 | colors, and hair bobbed in strange new ways, and shawls beyond the dreams of
     1192 | Castile. The bar is in full swing, and floating rounds of cocktails permeate the
          | ^~~~~~~ Did you mean to spell `Castile` this way?
@@ -1694,6 +1683,16 @@ Message: |
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1250 | Welcome or not, I found it necessary to attach myself to some one before I
+         |                                                          ^~~~~~~~ Did you mean the closed compound `someone`?
+    1251 | should begin to address cordial remarks to the passers-by.
+Suggest:
+  - Replace with: “someone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     1287 | and address—inside of a week I got a package from Croirier’s with a new evening
@@ -1732,15 +1731,6 @@ Suggest:
   - Replace with: “gaiety”
   - Replace with: “gamely”
   - Replace with: “gamete”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-    1346 | couldn’t find him from the top of the steps, and he wasn’t on the veranda. On a
-         |                                                                   ^~~~~~~ Did you mean `Miranda`?
-Suggest:
-  - Replace with: “Miranda”
 
 
 
@@ -1991,7 +1981,17 @@ Lint:    WordChoice (63 priority)
 Message: |
     1531 | puppyish, convivial way, girls were swooning backward playfully into men’s arms,
     1532 | even into groups, knowing that some one would arrest their falls—but no one
-         |                                ^~~~~~~~ The auxiliary verb “would” implies the existence of the closed compound noun “someone”.
+         |                                ^~~~~~~~ Did you mean the closed compound noun “someone”?
+Suggest:
+  - Replace with: “someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1531 | puppyish, convivial way, girls were swooning backward playfully into men’s arms,
+    1532 | even into groups, knowing that some one would arrest their falls—but no one
+         |                                ^~~~~~~~ Did you mean the closed compound `someone`?
 Suggest:
   - Replace with: “someone”
 
@@ -2024,9 +2024,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     1612 | “It was . . . simply amazing,” she repeated abstractedly. “But I swore I
-         |               ^ This sentence does not start with a capital letter
+         |               ^~~~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “S”
+  - Replace with: “Simply”
 
 
 
@@ -2084,7 +2084,7 @@ Message: |
 Suggest:
   - Replace with: “W12's”
   - Replace with: “WAL's”
-  - Replace with: “WNW's”
+  - Replace with: “WIP's”
 
 
 
@@ -2096,6 +2096,15 @@ Suggest:
   - Replace with: “outta”
   - Replace with: “out”
   - Replace with: “outs”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1701 | “It came off,” some one explained.
+         |                ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “someone”
 
 
 
@@ -2169,6 +2178,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1772 | again. At first I was flattered to go places with her, because she was a golf
+    1773 | champion, and every one knew her name. Then it was something more. I wasn’t
+         |               ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
+
+
+
 Lint:    Readability (127 priority)
 Message: |
     1777 | found what it was. When we were on a house-party together up in Warwick, she
@@ -2192,6 +2211,15 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     1792 | smile turned to the world and yet satisfy the demands of her hard, jaunty body.
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 48 words long.
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    1827 | Every one suspects himself of at least one of the cardinal virtues, and this is
+         | ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “Everyone”
 
 
 
@@ -2334,9 +2362,9 @@ Message: |
     1858 | farther out on the Island came the Cheadles and the O. R. P. Schraeders, and the
          |                                                        ^~ Did you mean to spell `R.` this way?
 Suggest:
-  - Replace with: “Rm”
-  - Replace with: “R”
   - Replace with: “Re”
+  - Replace with: “R”
+  - Replace with: “Rd”
 
 
 
@@ -2345,9 +2373,9 @@ Message: |
     1858 | farther out on the Island came the Cheadles and the O. R. P. Schraeders, and the
          |                                                           ^~ Did you mean to spell `P.` this way?
 Suggest:
-  - Replace with: “Pt”
+  - Replace with: “Pp”
+  - Replace with: “P”
   - Replace with: “Pa”
-  - Replace with: “Pf”
 
 
 
@@ -2410,9 +2438,9 @@ Message: |
     1862 | The Dancies came, too, and S. B. Whitebait, who was well over sixty, and Maurice
          |                            ^~ Did you mean to spell `S.` this way?
 Suggest:
-  - Replace with: “Sf”
   - Replace with: “So”
   - Replace with: “Sq”
+  - Replace with: “St”
 
 
 
@@ -2423,7 +2451,7 @@ Message: |
 Suggest:
   - Replace with: “Bu”
   - Replace with: “Be”
-  - Replace with: “Bf”
+  - Replace with: “Bk”
 
 
 
@@ -2433,9 +2461,9 @@ Message: |
     1863 | A. Flink, and the Hammerheads, and Beluga the tobacco importer, and Beluga’s
          | ^~ Did you mean to spell `A.` this way?
 Suggest:
-  - Replace with: “Ax”
-  - Replace with: “A”
+  - Replace with: “Aw”
   - Replace with: “Ab”
+  - Replace with: “Ac”
 
 
 
@@ -2513,9 +2541,9 @@ Message: |
     1868 | Excellence, and Eckhaust and Clyde Cohen and Don S. Schwartze (the son) and
          |                                                  ^~ Did you mean to spell `S.` this way?
 Suggest:
-  - Replace with: “Sf”
   - Replace with: “So”
   - Replace with: “Sq”
+  - Replace with: “St”
 
 
 
@@ -2558,7 +2586,7 @@ Message: |
          |                              ^~ Did you mean to spell `G.` this way?
 Suggest:
   - Replace with: “Gt”
-  - Replace with: “G”
+  - Replace with: “Go”
   - Replace with: “Gr”
 
 
@@ -2593,8 +2621,8 @@ Message: |
          |                               ^~ Did you mean to spell `Da` this way?
 Suggest:
   - Replace with: “D”
-  - Replace with: “Dab”
   - Replace with: “Dad”
+  - Replace with: “Dag”
 
 
 
@@ -2640,7 +2668,7 @@ Message: |
 Suggest:
   - Replace with: “Bu”
   - Replace with: “Be”
-  - Replace with: “Bf”
+  - Replace with: “Bk”
 
 
 
@@ -2650,9 +2678,9 @@ Message: |
          |                                         ^~ Did you mean to spell `De` this way?
     1873 | gamble, and when Ferret wandered into the garden it meant he was cleaned out and
 Suggest:
-  - Replace with: “D”
-  - Replace with: “Dc”
-  - Replace with: “Dev”
+  - Replace with: “Db”
+  - Replace with: “Dd”
+  - Replace with: “Deb”
 
 
 
@@ -2802,9 +2830,9 @@ Message: |
     1881 | Scullys and S. W. Belcher and the Smirkes and the young Quinns, divorced now,
          |             ^~ Did you mean to spell `S.` this way?
 Suggest:
-  - Replace with: “Sf”
   - Replace with: “So”
   - Replace with: “Sq”
+  - Replace with: “St”
 
 
 
@@ -2860,9 +2888,9 @@ Message: |
     1882 | and Henry L. Palmetto, who killed himself by jumping in front of a subway train
          |           ^~ Did you mean to spell `L.` this way?
 Suggest:
+  - Replace with: “Lo”
+  - Replace with: “Lb”
   - Replace with: “Lg”
-  - Replace with: “La”
-  - Replace with: “LC”
 
 
 
@@ -2982,9 +3010,9 @@ Message: |
     1896 | Fitz-Peters and Mr. P. Jewett, once head of the American Legion, and Miss
          |                     ^~ Did you mean to spell `P.` this way?
 Suggest:
-  - Replace with: “Pt”
+  - Replace with: “Pp”
+  - Replace with: “P”
   - Replace with: “Pa”
-  - Replace with: “Pf”
 
 
 
@@ -3452,15 +3480,6 @@ Suggest:
 
 
 
-Lint:    WordChoice (63 priority)
-Message: |
-    2212 | “Well!” I inspected them. “That’s a very interesting idea.”
-         |                                   ^~~~~~ The possessive noun implies ownership of the closed compound noun “Avery”.
-Suggest:
-  - Replace with: “Avery”
-
-
-
 Lint:    Spelling (63 priority)
 Message: |
     2218 | Mr. Wolfshiem drank his coffee with a jerk and got to his feet.
@@ -3498,6 +3517,15 @@ Message: |
          |        ^~~~~~~~~ Did you mean `Bolshie`?
 Suggest:
   - Replace with: “Bolshie”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    2265 | “Come along with me for a minute,” I said; “I’ve got to say hello to some one.”
+         |                                                                      ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “someone”
 
 
 
@@ -3726,6 +3754,15 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (55 priority)
+Message: |
+    2462 | “Does she want to see Gatsby?”
+         |           ^~~~ Did you mean `wants`?
+Suggest:
+  - Replace with: “wants”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     2467 | We passed a barrier of dark trees, and then the façade of Fifty-ninth Street, a
@@ -3792,9 +3829,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     2603 | “Of course, of course! They’re fine!” and he added hollowly, “. . . old sport.”
-         |                                                                     ^ This sentence does not start with a capital letter
+         |                                                                     ^~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “O”
+  - Replace with: “Old”
 
 
 
@@ -4465,19 +4502,6 @@ Suggest:
 
 
 
-Lint:    Style (63 priority)
-Message: |
-    3263 | “Perhaps you know that lady,” Gatsby indicated a gorgeous, scarcely human orchid
-         |                                                                           ^~~~~~~
-    3264 | of a woman who sat in state under a white-plum tree. Tom and Daisy stared, with
-         | ~~~~ The word `of` is not needed here.
-Suggest:
-  - Replace with: “orchid
-a”
-  - Replace with: “orchid a”
-
-
-
 Lint:    Formatting (63 priority)
 Message: |
     3274 | “Mrs. Buchanan . . . and Mr. Buchanan—” After an instant’s hesitation he added:
@@ -4490,9 +4514,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     3274 | “Mrs. Buchanan . . . and Mr. Buchanan—” After an instant’s hesitation he added:
-         |                      ^ This sentence does not start with a capital letter
+         |                      ^~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “A”
+  - Replace with: “And”
 
 
 
@@ -4717,6 +4741,16 @@ Message: |
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    3562 | length and by the extreme tip of the corners to indicate that I had no designs
+    3563 | upon it—but every one near by, including the woman, suspected me just the same.
+         |             ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
+
+
+
 Lint:    Formatting (63 priority)
 Message: |
     3566 | Hot! . . . Hot! . . . Is it hot enough for you? Is it hot? Is it . . .?”
@@ -4726,12 +4760,12 @@ Suggest:
 
 
 
-Lint:    WordChoice (63 priority)
+Lint:    Miscellaneous (31 priority)
 Message: |
     3568 | My commutation ticket came back to me with a dark stain from his hand. That any
          |                                                                             ^~~~
     3569 | one should care in this heat whose flushed lips he kissed, whose head made damp
-         | ~~~ The auxiliary verb “should” implies the existence of the closed compound noun “anyone”.
+         | ~~~ Did you mean the closed compound `anyone`?
 Suggest:
   - Replace with: “anyone”
 
@@ -4787,9 +4821,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     3607 | all . . . and as for your bothering me about it at lunch time, I won’t stand
-         |           ^ This sentence does not start with a capital letter
+         |           ^~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “A”
+  - Replace with: “And”
 
 
 
@@ -4918,15 +4952,6 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
-    3693 | I went with them out to the veranda. On the green Sound, stagnant in the heat,
-         |                             ^~~~~~~ Did you mean `Miranda`?
-Suggest:
-  - Replace with: “Miranda”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
     3709 | We had luncheon in the dining-room, darkened too against the heat, and drank
     3710 | down nervous gayety with the cold ale.
          |              ^~~~~~ Did you mean to spell `gayety` this way?
@@ -4943,6 +4968,27 @@ Message: |
          |  ^~~~~~~ Did you mean `That'll`?
 Suggest:
   - Replace with: “That'll”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    3736 | mouth opened a little, and he looked at Gatsby, and then back at Daisy as if he
+    3737 | had just recognized her as some one he knew a long time ago.
+         |                            ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    3754 | “Are we just going to go?” she objected. “Like this? Aren’t we going to let any
+         |                                                                             ^~~~
+    3755 | one smoke a cigarette first?”
+         | ~~~ Did you mean the closed compound `anyone`?
+Suggest:
+  - Replace with: “anyone”
 
 
 
@@ -4985,7 +5031,7 @@ Message: |
 Suggest:
   - Replace with: “To”
   - Replace with: “T”
-  - Replace with: “Ta”
+  - Replace with: “Tb”
 
 
 
@@ -4994,9 +5040,9 @@ Message: |
     3874 | while in silence. Then as Doctor T. J. Eckleburg’s faded eyes came into sight
          |                                     ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -5020,15 +5066,6 @@ Suggest:
   - Replace with: “coup”
   - Replace with: “coupe”
   - Replace with: “coups”
-
-
-
-Lint:    Style (63 priority)
-Message: |
-    3923 | The coupé flashed by us with a flurry of dust and the flash of a waving hand.
-         |                                                       ^~~~~~~~~~ The word `of` is not needed here.
-Suggest:
-  - Replace with: “flash a”
 
 
 
@@ -5063,7 +5100,7 @@ Message: |
 Suggest:
   - Replace with: “To”
   - Replace with: “T”
-  - Replace with: “Ta”
+  - Replace with: “Tb”
 
 
 
@@ -5072,9 +5109,9 @@ Message: |
     3948 | behind. Over the ashheaps the giant eyes of Doctor T. J. Eckleburg kept their
          |                                                       ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -5176,6 +5213,26 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    4010 | “It’s a swell suite,” whispered Jordan respectfully, and every one laughed.
+         |                                                          ^~~~~~~~~ Did you mean the closed compound `everyone`?
+Suggest:
+  - Replace with: “everyone”
+
+
+
+Lint:    Spelling (63 priority)
+Message: |
+    4016 | “Well, we’d better telephone for an axe———”
+         |                                     ^~~ Did you mean to spell `axe` this way?
+Suggest:
+  - Replace with: “aye”
+  - Replace with: “ace”
+  - Replace with: “age”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     4054 | “Biloxi,” he answered shortly.
@@ -5234,17 +5291,6 @@ Suggest:
 
 Lint:    Spelling (63 priority)
 Message: |
-    4066 | “That was his cousin. I knew his whole family history before he left. He gave me
-    4067 | an aluminum putter that I use to-day.”
-         |    ^~~~~~~~ Did you mean to spell `aluminum` this way?
-Suggest:
-  - Replace with: “alumnus”
-  - Replace with: “alumina”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
     4073 | “We're getting old,” said Daisy. “lf we were young we’d rise and dance.”
          |                                   ^~ Did you mean to spell `lf` this way?
 Suggest:
@@ -5282,7 +5328,7 @@ Message: |
          |                                                                  ^~~ Did you mean to spell `Asa` this way?
     4084 | brought him around at the last minute and asked if we had room for him.”
 Suggest:
-  - Replace with: “Ask”
+  - Replace with: “Ass”
   - Replace with: “Ada”
   - Replace with: “Ala”
 
@@ -5331,6 +5377,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    4182 | was poor and she was tired of waiting for me. It was a terrible mistake, but in
+    4183 | her heart she never loved any one except me!”
+         |                           ^~~~~~~ Did you mean the closed compound `anyone`?
+Suggest:
+  - Replace with: “anyone”
+
+
+
 Lint:    Readability (127 priority)
 Message: |
     4185 | At this point Jordan and I tried to go, but Tom and Gatsby insisted with
@@ -5359,15 +5415,6 @@ Message: |
          |                                                       ^~~~~~~~~ Did you mean the closed compound noun “backdoor”?
 Suggest:
   - Replace with: “backdoor”
-
-
-
-Lint:    WordChoice (63 priority)
-Message: |
-    4227 | “Daisy, that’s all over now,” he said earnestly. “It doesn’t matter any more.
-         |                ^~~~~~~~ The possessive noun implies ownership of the closed compound noun “allover”.
-Suggest:
-  - Replace with: “allover”
 
 
 
@@ -5477,15 +5524,6 @@ Suggest:
 
 
 
-Lint:    Style (63 priority)
-Message: |
-    4375 | I was thirty. Before me stretched the portentous, menacing road of a new decade.
-         |                                                            ^~~~~~~~~ The word `of` is not needed here.
-Suggest:
-  - Replace with: “road a”
-
-
-
 Lint:    Spelling (63 priority)
 Message: |
     4377 | It was seven o’clock when we got into the coupé with him and started for Long
@@ -5495,17 +5533,6 @@ Suggest:
   - Replace with: “coup”
   - Replace with: “coupe”
   - Replace with: “coups”
-
-
-
-Lint:    WordChoice (31 priority)
-Message: |
-    4380 | the elevated overhead. Human sympathy has its limits, and we were content to let
-         |                                                                              ^~~ To suggest an action, use 'let's' or 'let us'.
-    4381 | all their tragic arguments fade with the city lights behind. Thirty—the promise
-Suggest:
-  - Replace with: “let's”
-  - Replace with: “let us”
 
 
 
@@ -5546,6 +5573,16 @@ Message: |
          | ^~~~~~~~~ Did you mean `Michael`?
 Suggest:
   - Replace with: “Michael”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    4405 | stared at the people and the cars that passed along the road. When any one spoke
+         |                                                                    ^~~~~~~ Did you mean the closed compound `anyone`?
+    4406 | to him he invariably laughed in an agreeable, colorless way. He was his wife’s
+Suggest:
+  - Replace with: “anyone”
 
 
 
@@ -5627,15 +5664,6 @@ Message: |
          |                                  ^~~~~~~~~ Did you mean `Wilson`?
 Suggest:
   - Replace with: “Wilson”
-
-
-
-Lint:    Style (63 priority)
-Message: |
-    4450 | I became aware now of a hollow, wailing sound which issued incessantly from the
-         |                ^~~~~~~~ The word `of` is not needed here.
-Suggest:
-  - Replace with: “now a”
 
 
 
@@ -5916,6 +5944,15 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    4564 | Some one who had been driving a little behind us confirmed this, and the
+         | ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “Someone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     4572 | “If somebody’ll come here and sit with him,” he snapped authoritatively. He
@@ -5956,16 +5993,6 @@ Suggest:
   - Replace with: “Welshmen's”
   - Replace with: “Wolfe's”
   - Replace with: “Wolsey's”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-    4703 | I walked back along the border of the lawn, traversed the gravel softly, and
-    4704 | tiptoed up the veranda steps. The drawing-room curtains were open, and I saw
-         |                ^~~~~~~ Did you mean `Miranda`?
-Suggest:
-  - Replace with: “Miranda”
 
 
 
@@ -6153,6 +6180,35 @@ Message: |
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5027 | intolerable part of the affair. Some one, kind or curious, took her in his car
+         |                                 ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “Someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5032 | For a while the door of the office was open, and every one who came into the
+         |                                                  ^~~~~~~~~ Did you mean the closed compound `everyone`?
+    5033 | garage glanced irresistibly through it. Finally some one said it was a shame,
+Suggest:
+  - Replace with: “everyone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5033 | garage glanced irresistibly through it. Finally some one said it was a shame,
+         |                                                 ^~~~~~~~ Did you mean the closed compound `someone`?
+    5034 | and closed the door. Michaelis and several other men were with him; first, four
+Suggest:
+  - Replace with: “someone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     5034 | and closed the door. Michaelis and several other men were with him; first, four
@@ -6326,7 +6382,7 @@ Message: |
 Suggest:
   - Replace with: “To”
   - Replace with: “T”
-  - Replace with: “Ta”
+  - Replace with: “Tb”
 
 
 
@@ -6335,9 +6391,9 @@ Message: |
     5156 | of Doctor T. J. Eckleburg, which had just emerged, pale and enormous, from the
          |              ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -6397,7 +6453,7 @@ Message: |
 Suggest:
   - Replace with: “Ga's”
   - Replace with: “Gd's”
-  - Replace with: “Gab's”
+  - Replace with: “Gag's”
 
 
 
@@ -6409,7 +6465,7 @@ Message: |
 Suggest:
   - Replace with: “Ga's”
   - Replace with: “Gd's”
-  - Replace with: “Gab's”
+  - Replace with: “Gag's”
 
 
 
@@ -6420,6 +6476,46 @@ Message: |
          | ^~~~~~~~~ Did you mean `Michael`?
 Suggest:
   - Replace with: “Michael”
+
+
+
+Lint:    WordChoice (63 priority)
+Message: |
+    5181 | easier, surer way of finding out what he wanted to know. By half-past two he was
+    5182 | in West Egg, where he asked some one the way to Gatsby’s house. So by that time
+         |                             ^~~~~~~~ Did you mean the closed compound noun “someone”?
+Suggest:
+  - Replace with: “someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5181 | easier, surer way of finding out what he wanted to know. By half-past two he was
+    5182 | in West Egg, where he asked some one the way to Gatsby’s house. So by that time
+         |                             ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5185 | At two o’clock Gatsby put on his bathing-suit and left word with the butler that
+    5186 | if any one phoned word was to be brought to him at the pool. He stopped at the
+         |    ^~~~~~~ Did you mean the closed compound `anyone`?
+Suggest:
+  - Replace with: “anyone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5197 | for it until four o’clock—until long after there was any one to give it to if it
+         |                                                      ^~~~~~~ Did you mean the closed compound `anyone`?
+    5198 | came. I have an idea that Gatsby himself didn’t believe it would come, and
+Suggest:
+  - Replace with: “anyone”
 
 
 
@@ -6435,9 +6531,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     5205 | like that ashen, fantastic figure gliding toward him through the amorphous
-         | ^ This sentence does not start with a capital letter
+         | ^~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “L”
+  - Replace with: “Like”
 
 
 
@@ -6462,6 +6558,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5210 | station directly to Gatsby’s house and my rushing anxiously up the front steps
+    5211 | was the first thing that alarmed any one. But they knew then, I firmly believe.
+         |                                  ^~~~~~~ Did you mean the closed compound `anyone`?
+Suggest:
+  - Replace with: “anyone”
+
+
+
 Lint:    Readability (127 priority)
 Message: |
     5230 | and out of Gatsby’s front door. A rope stretched across the main gate and a
@@ -6472,6 +6578,15 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     5233 | open-mouthed about the pool. Some one with a positive manner, perhaps a
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 42 words long.
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5233 | open-mouthed about the pool. Some one with a positive manner, perhaps a
+         |                              ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “Someone”
 
 
 
@@ -6524,6 +6639,17 @@ Message: |
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5255 | I was responsible, because no one else was interested—interested, I mean, with
+    5256 | that intense personal interest to which every one has some vague right at the
+         |                                         ^~~~~~~~~ Did you mean the closed compound `everyone`?
+    5257 | end.
+Suggest:
+  - Replace with: “everyone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     5279 | Meyer Wolfshiem’s name wasn’t in the phone book. The butler gave me his office
@@ -6532,6 +6658,15 @@ Suggest:
   - Replace with: “Welshmen's”
   - Replace with: “Wolfe's”
   - Replace with: “Wolsey's”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5299 | Some one started to ask me questions, but I broke away and going up-stairs
+         | ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “Someone”
 
 
 
@@ -6662,9 +6797,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     5350 | exclamation . . . then a quick squawk as the connection was broken.
-         |                   ^ This sentence does not start with a capital letter
+         |                   ^~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “T”
+  - Replace with: “Then”
 
 
 
@@ -6673,9 +6808,9 @@ Message: |
     5352 | I think it was on the third day that a telegram signed Henry C. Gatz arrived
          |                                                              ^~ Did you mean to spell `C.` this way?
 Suggest:
-  - Replace with: “Cw”
+  - Replace with: “Cu”
   - Replace with: “C”
-  - Replace with: “Ca”
+  - Replace with: “Cc”
 
 
 
@@ -6773,9 +6908,9 @@ Message: |
     5412 | “If he’d of lived, he’d of been a great man. A man like James J. Hill. He’d of
          |                                                               ^~ Did you mean to spell `J.` this way?
 Suggest:
-  - Replace with: “Jg”
+  - Replace with: “Jr”
   - Replace with: “J”
-  - Replace with: “JD”
+  - Replace with: “Jg”
 
 
 
@@ -6803,7 +6938,7 @@ Message: |
 Suggest:
   - Replace with: “Bu”
   - Replace with: “Be”
-  - Replace with: “Bf”
+  - Replace with: “Bk”
 
 
 
@@ -6812,9 +6947,9 @@ Message: |
     5455 | and I’m sort of helpless without them. My address is care of B. F.———”
          |                                                                 ^~ Did you mean to spell `F.` this way?
 Suggest:
+  - Replace with: “Ft”
+  - Replace with: “F”
   - Replace with: “Fa”
-  - Replace with: “Ff”
-  - Replace with: “Fr”
 
 
 
@@ -6827,6 +6962,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5466 | advice of an elevator boy, was marked “The Swastika Holding Company,” and at
+    5467 | first there didn’t seem to be any one inside. But when I’d shouted “hello”
+         |                               ^~~~~~~ Did you mean the closed compound `anyone`?
+Suggest:
+  - Replace with: “anyone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     5472 | “Nobody’s in,” she said. “Mr. Wolfshiem’s gone to Chicago.”
@@ -6835,6 +6980,16 @@ Suggest:
   - Replace with: “Welshmen's”
   - Replace with: “Wolfe's”
   - Replace with: “Wolsey's”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5474 | The first part of this was obviously untrue, for some one had begun to whistle
+         |                                                  ^~~~~~~~ Did you mean the closed compound `someone`?
+    5475 | “The Rosary,” tunelessly, inside.
+Suggest:
+  - Replace with: “someone”
 
 
 
@@ -6996,6 +7151,16 @@ Suggest:
 
 
 
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5631 | wet to the skin. As we started through the gate into the cemetery I heard a car
+    5632 | stop and then the sound of some one splashing after us over the soggy ground. I
+         |                            ^~~~~~~~ Did you mean the closed compound `someone`?
+Suggest:
+  - Replace with: “someone”
+
+
+
 Lint:    Spelling (63 priority)
 Message: |
     5633 | looked around. It was the man with owl-eyed glasses whom I had found marvelling
@@ -7003,6 +7168,26 @@ Message: |
     5634 | over Gatsby’s books in the library one night three months before.
 Suggest:
   - Replace with: “marveling”
+
+
+
+Lint:    WordChoice (63 priority)
+Message: |
+    5642 | message or a flower. Dimly I heard some one murmur “Blessed are the dead that
+         |                                    ^~~~~~~~ Did you mean the closed compound noun “someone”?
+    5643 | the rain falls on,” and then the owl-eyed man said “Amen to that,” in a brave
+Suggest:
+  - Replace with: “someone”
+
+
+
+Lint:    Miscellaneous (31 priority)
+Message: |
+    5642 | message or a flower. Dimly I heard some one murmur “Blessed are the dead that
+         |                                    ^~~~~~~~ Did you mean the closed compound `someone`?
+    5643 | the rain falls on,” and then the owl-eyed man said “Amen to that,” in a brave
+Suggest:
+  - Replace with: “someone”
 
 
 
@@ -7019,9 +7204,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
     5653 | “Go on!” He started. “Why, my God! they used to go there by the hundreds.”
-         |                                    ^ This sentence does not start with a capital letter
+         |                                    ^~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “T”
+  - Replace with: “They”
 
 
 
@@ -7205,7 +7390,7 @@ Message: |
 Suggest:
   - Replace with: “Ea”
   - Replace with: “Ed”
-  - Replace with: “Eel”
+  - Replace with: “En”
 
 
 
@@ -7238,16 +7423,6 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     5714 | leaf, her face the same brown tint as the fingerless glove on her knee. When I
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 43 words long.
-
-
-
-Lint:    Style (63 priority)
-Message: |
-    5713 | illustration, her chin raised a little jauntily, her hair the color of an autumn
-         |                                                               ^~~~~~~~~~~ The word `of` is not needed here.
-    5714 | leaf, her face the same brown tint as the fingerless glove on her knee. When I
-Suggest:
-  - Replace with: “color an”
 
 
 
@@ -7342,6 +7517,16 @@ Suggest:
   - Replace with: “ragingly”
   - Replace with: “rasping”
   - Replace with: “dashingly”
+
+
+
+Lint:    WordChoice (54 priority)
+Message: |
+    5814 | green breast of the new world. Its vanished trees, the trees that had made way
+         |                                ^~~ Use `it's` (short for `it has` or `it is`) here, not the possessive `its`.
+Suggest:
+  - Replace with: “It's”
+  - Replace with: “It has”
 
 
 

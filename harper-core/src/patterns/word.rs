@@ -27,6 +27,11 @@ impl Word {
         }
     }
 
+    /// Matches the provided word, ignoring case.
+    pub fn from_char_string(word: CharString) -> Self {
+        Self { word, exact: false }
+    }
+
     /// Matches the provided word, case-sensitive.
     pub fn new_exact(word: &'static str) -> Self {
         Self {
@@ -46,16 +51,14 @@ impl SingleTokenPattern for Word {
         }
 
         let chars = token.span.get_content(source);
-        let eq = if self.exact {
+        if self.exact {
             chars == self.word.as_slice()
         } else {
             chars
                 .iter()
                 .zip(&self.word)
                 .all(|(a, b)| a.eq_ignore_ascii_case(b))
-        };
-
-        eq
+        }
     }
 }
 

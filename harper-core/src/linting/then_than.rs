@@ -1,43 +1,48 @@
-use super::{Lint, LintKind, PatternLinter};
+use super::{ExprLinter, Lint, LintKind};
 use crate::Token;
+use crate::expr::All;
+use crate::expr::Expr;
+use crate::expr::LongestMatchOf;
+use crate::expr::OwnedExprExt;
+use crate::expr::SequenceExpr;
 use crate::linting::Suggestion;
-use crate::patterns::{
-    All, EitherPattern, Invert, OwnedPatternExt, Pattern, SequencePattern, Word, WordSet,
-};
+use crate::patterns::{Invert, Word, WordSet};
 
-#[doc = "Corrects the misuse of `then` to `than`."]
+/// Corrects the misuse of `then` to `than`.
 pub struct ThenThan {
-    pattern: Box<dyn Pattern>,
+    expr: Box<dyn Expr>,
 }
 
 impl ThenThan {
     pub fn new() -> Self {
         Self {
-            pattern: Box::new(All::new(vec![
-                Box::new(EitherPattern::new(vec![
+            expr: Box::new(All::new(vec![
+                Box::new(LongestMatchOf::new(vec![
                     // Comparative form of adjective
                     Box::new(
-                        SequencePattern::default()
+                        SequenceExpr::default()
                             .then(Word::new("other").or(Box::new(
                                 |tok: &Token, source: &[char]| {
                                     is_comparative_adjective(tok, source)
                                 },
                             )))
-                            .then_whitespace()
-                            .then_any_capitalization_of("then")
-                            .then_whitespace()
-                            .then(Invert::new(Word::new("that"))),
+                            .t_ws()
+                            .t_aco("then")
+                            .t_ws()
+                            .if_not_then_step_one(Word::new("that")),
                     ),
                     // Positive form of adjective following "more" or "less"
                     Box::new(
-                        SequencePattern::default()
+                        SequenceExpr::default()
                             .then(WordSet::new(&["more", "less"]))
-                            .then_whitespace()
-                            .then_adjective()
-                            .then_whitespace()
-                            .then_any_capitalization_of("then")
-                            .then_whitespace()
-                            .then(Invert::new(Word::new("that"))),
+                            .t_ws()
+                            .then(|tok: &Token, _source: &[char]| {
+                                tok.kind.is_adjective() || tok.kind.is_adverb()
+                            })
+                            .t_ws()
+                            .t_aco("then")
+                            .t_ws()
+                            .if_not_then_step_one(Word::new("that")),
                     ),
                 ])),
                 // Exceptions to the rule.
@@ -49,8 +54,7 @@ impl ThenThan {
 
 // TODO: This can be simplified or eliminated when the adjective improvements make it into the affix system.
 fn is_comparative_adjective(tok: &Token, source: &[char]) -> bool {
-    tok.kind
-        .is_adjective()
+    (tok.kind.is_adjective() || tok.kind.is_adverb())
         .then(|| tok.span.get_content(source))
         .is_some_and(|src| {
             // Regular comparative form?
@@ -68,9 +72,9 @@ impl Default for ThenThan {
     }
 }
 
-impl PatternLinter for ThenThan {
-    fn pattern(&self) -> &dyn Pattern {
-        self.pattern.as_ref()
+impl ExprLinter for ThenThan {
+    fn expr(&self) -> &dyn Expr {
+        self.expr.as_ref()
     }
     fn match_to_lint(&self, matched_tokens: &[Token], source: &[char]) -> Option<Lint> {
         // For both "stupider then X" and "more stupid then X", "then" is 3rd last token.

@@ -167,9 +167,9 @@ Message: |
       78 | ASCC/Harvard Mark I, based on Babbage's Analytical Engine, which itself used
          | ^~~~ Did you mean to spell `ASCC` this way?
 Suggest:
+  - Replace with: “AAC”
   - Replace with: “ABC”
   - Replace with: “ABCs”
-  - Replace with: “ACL”
 
 
 
@@ -177,9 +177,10 @@ Lint:    Spelling (63 priority)
 Message: |
       82 | During the 1940s, with the development of new and more powerful computing
       83 | machines such as the Atanasoff–Berry computer and ENIAC, the term computer came
-         |                      ^~~~~~~~~ Did you mean `Standoff`?
+         |                      ^~~~~~~~~ Did you mean to spell `Atanasoff` this way?
 Suggest:
   - Replace with: “Standoff”
+  - Replace with: “Stand off”
 
 
 
@@ -239,16 +240,6 @@ Suggest:
   - Replace with: “Fern”
   - Replace with: “Fain”
   - Replace with: “Vein”
-
-
-
-Lint:    Style (63 priority)
-Message: |
-     108 | management science, the subject is applied and interdisciplinary in nature,
-     109 | while having the characteristics typical of an academic discipline. His efforts,
-         |                                  ^~~~~~~~~~~~~ The word `of` is not needed here.
-Suggest:
-  - Replace with: “typical an”
 
 
 
@@ -549,18 +540,6 @@ Message: |
 Lint:    Spelling (63 priority)
 Message: |
      155 | influenced by the work of mathematicians such as Kurt Gödel, Alan Turing, John
-         |                                                       ^~~~~ Did you mean to spell `Gödel` this way?
-     156 | von Neumann, Rózsa Péter and Alonzo Church and there continues to be a useful
-Suggest:
-  - Replace with: “Godel”
-  - Replace with: “Gael”
-  - Replace with: “Gide”
-
-
-
-Lint:    Spelling (63 priority)
-Message: |
-     155 | influenced by the work of mathematicians such as Kurt Gödel, Alan Turing, John
      156 | von Neumann, Rózsa Péter and Alonzo Church and there continues to be a useful
          | ^~~ Did you mean to spell `von` this way?
 Suggest:
@@ -663,9 +642,9 @@ Message: |
      182 | Newell and Herbert A. Simon argued in 1975,
          |                    ^~ Did you mean to spell `A.` this way?
 Suggest:
-  - Replace with: “Ax”
-  - Replace with: “A”
+  - Replace with: “Aw”
   - Replace with: “Ab”
+  - Replace with: “Ac”
 
 
 
@@ -795,7 +774,7 @@ Message: |
          |                                                                 ^~ Did you mean to spell `H.` this way?
 Suggest:
   - Replace with: “Hi”
-  - Replace with: “H”
+  - Replace with: “Ha”
   - Replace with: “He”
 
 
@@ -901,9 +880,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
      262 | The famous P = NP? problem, one of the Millennium Prize Problems, is an open
-         |                    ^ This sentence does not start with a capital letter
+         |                    ^~~~~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “P”
+  - Replace with: “Problem”
 
 
 
@@ -954,10 +933,10 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
      327 | is the lower bound on the complexity of fast Fourier transform algorithms? is
-         |                                                                            ^ This sentence does not start with a capital letter
+         |                                                                            ^~ This sentence does not start with a capital letter
      328 | one of the unsolved problems in theoretical computer science.
 Suggest:
-  - Replace with: “I”
+  - Replace with: “Is”
 
 
 
@@ -1008,9 +987,9 @@ Message: |
      393 | term "architecture" in computer literature can be traced to the work of Lyle R.
          |                                                                              ^~ Did you mean to spell `R.` this way?
 Suggest:
-  - Replace with: “Rm”
-  - Replace with: “R”
   - Replace with: “Re”
+  - Replace with: “R”
+  - Replace with: “Rd”
 
 
 
@@ -1019,9 +998,9 @@ Message: |
      394 | Johnson and Frederick P. Brooks Jr., members of the Machine Organization
          |                       ^~ Did you mean to spell `P.` this way?
 Suggest:
-  - Replace with: “Pt”
+  - Replace with: “Pp”
+  - Replace with: “P”
   - Replace with: “Pa”
-  - Replace with: “Pf”
 
 
 
@@ -1118,9 +1097,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
      456 |   - print 1 at current location.
-         |     ^ This sentence does not start with a capital letter
+         |     ^~~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “P”
+  - Replace with: “Print”
 
 
 
@@ -1159,18 +1138,18 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
      466 |   - selection: IF such-and-such is the case, THEN do this, ELSE do that;
-         |     ^ This sentence does not start with a capital letter
+         |     ^~~~~~~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “S”
+  - Replace with: “Selection”
 
 
 
 Lint:    Capitalization (31 priority)
 Message: |
      467 |   - repetition: WHILE such-and-such is the case, DO this. The three rules of
-         |     ^ This sentence does not start with a capital letter
+         |     ^~~~~~~~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “R”
+  - Replace with: “Repetition”
 
 
 

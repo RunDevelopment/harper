@@ -6,6 +6,7 @@ mod char_string;
 mod currency;
 mod document;
 mod edit_distance;
+pub mod expr;
 mod fat_token;
 mod ignored_lints;
 pub mod language_detection;
@@ -34,7 +35,7 @@ pub use char_string::{CharString, CharStringExt};
 pub use currency::Currency;
 pub use document::Document;
 pub use fat_token::{FatStringToken, FatToken};
-pub use ignored_lints::IgnoredLints;
+pub use ignored_lints::{IgnoredLints, LintContext};
 use linting::Lint;
 pub use mask::{Mask, Masker};
 pub use number::{Number, OrdinalSuffix};
@@ -48,7 +49,7 @@ pub use token_kind::TokenKind;
 pub use token_string_ext::TokenStringExt;
 pub use vec_ext::VecExt;
 pub use word_metadata::{
-    AdverbData, ConjunctionData, Degree, Dialect, NounData, PronounData, Tense, VerbData,
+    AdverbData, ConjunctionData, Degree, Dialect, NounData, PronounData, VerbData, VerbForm,
     WordMetadata,
 };
 

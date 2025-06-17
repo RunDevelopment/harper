@@ -163,12 +163,13 @@ In the above example, "spellcheckd", "this this", and other spelling or grammar 
 }
 ```
 
-### Dictionaries
+### Directories 
 
 | Config         | Type     | Default Value | Description                                                     |
 | -------------- | -------- | ------------- | --------------------------------------------------------------- |
 | `userDictPath` | `string` | `""`          | Set the file path where the user dictionary is located          |
 | `fileDictPath` | `string` | `""`          | Set the directory where the file-local dictionaries are located |
+| `ignoredLintsPath` | `string` | `""`          | Set the directory where the ignored lint lists are located |
 
 ### Linters
 
@@ -249,6 +250,7 @@ These configs are under the `markdown` key:
 | `diagnosticSeverity` | `"error"`, `"hint"`, `"information"`, `"warning"`       | `"hint"`      | Configures how severe diagnostics appear in your editor                                                                                                                   |
 | `isolateEnglish`     | `boolean`                                               | `false`       | In documents that are a mixture of English and another language, only lint English text. This feature is incredibly new and unstable. Do not expect it to work perfectly. |
 | `dialect`            | `"American"`, `"British"`, `"Australian"`, `"Canadian"` | `"American"`  | Set the dialect of English Harper should expect.                                                                                                                          |
+| `maxFileLength`      | `number`                                                | `120000`      | Maximum length of file to be linted (in bytes). If a file is larger/longer than this, it will not be linted.                                                              |
 
 ## Supported Languages
 
@@ -285,6 +287,7 @@ These configs are under the `markdown` key:
 | TypeScript        |         `typescript`          |            ✅ |
 | TypeScript React  |       `typescriptreact`       |            ✅ |
 | Typst             |            `typst`            |               |
+| Kotlin            |            `kotlin`           |            ✅ |
 
 Want your language added?
 Let us know by [commenting on this issue](https://github.com/Automattic/harper/issues/79).

@@ -2,7 +2,7 @@
 	"name": "harper",
 	"displayName": "Harper - Grammar / Spell Checking",
 	"description": "The grammar checker for developers",
-	"version": "0.34.1",
+	"version": "0.43.0",
 	"private": true,
 	"author": "Elijah Potter",
 	"publisher": "elijah-potter",
@@ -37,6 +37,7 @@
 		"onLanguage:java",
 		"onLanguage:javascript",
 		"onLanguage:javascriptreact",
+		"onLanguage:kotlin",
 		"onLanguage:literate haskell",
 		"onLanguage:lua",
 		"onLanguage:markdown",
@@ -117,10 +118,22 @@
 					"default": false,
 					"description": "Skip linting link titles."
 				},
+				"harper.maxFileLength": {
+					"scope": "resource",
+					"type": "number",
+					"default": 120000,
+					"description": "Maximum length of file to be linted (in bytes). If a file is larger than this, it will not be linted."
+				},
 				"harper.userDictPath": {
 					"scope": "resource",
 					"type": "string",
 					"description": "Optional path to a global dictionary file to use."
+				},
+				"harper.linters.ACoupleMore": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `a couple of more` to `a couple more`."
 				},
 				"harper.linters.ALongTime": {
 					"scope": "resource",
@@ -133,6 +146,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects `a lot worst` to `a lot worse` for proper comparative usage."
+				},
+				"harper.linters.APart": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Finds and corrects common mistakes between 'a part' and 'apart'"
 				},
 				"harper.linters.AWholeEntire": {
 					"scope": "resource",
@@ -152,6 +171,12 @@
 					"default": true,
 					"description": "Corrects the missing article after `after while` or `after awhile`, forming `after a while`."
 				},
+				"harper.linters.AllOfASudden": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `all of the sudden` to `all of a sudden`."
+				},
 				"harper.linters.AlzheimersDisease": {
 					"scope": "resource",
 					"type": "boolean",
@@ -169,6 +194,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "When referring to North, Central, and South America, make sure to treat them as a proper noun."
+				},
+				"harper.linters.AmountsFor": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `amounts for` to either `amounts to` or `accounts for`"
 				},
 				"harper.linters.AnA": {
 					"scope": "resource",
@@ -224,6 +255,12 @@
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `anyhow`."
 				},
+				"harper.linters.Anyone": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Looks for incorrect spacing inside the closed compound `anyone`."
+				},
 				"harper.linters.Anywhere": {
 					"scope": "resource",
 					"type": "boolean",
@@ -236,17 +273,41 @@
 					"default": true,
 					"description": "When referring to Apple products and services, make sure to treat them as proper nouns."
 				},
+				"harper.linters.AsFarAsIKnow": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
 				"harper.linters.AsFarBackAs": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects nonstandard `as early back as` to `as far back as`."
 				},
+				"harper.linters.AsOfLate": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `as of lately` to `as of late`."
+				},
+				"harper.linters.AsSoonAsPossible": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
 				"harper.linters.AsWell": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects `aswell` to `as well`."
+				},
+				"harper.linters.AskNoPreposition": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Identifies sequences like `ask to us` or `tell to him` and recommends removing the superfluous “to”."
 				},
 				"harper.linters.AtFaceValue": {
 					"scope": "resource",
@@ -320,6 +381,12 @@
 					"default": true,
 					"description": "Changes `baited breath` to the correct `bated breath`."
 				},
+				"harper.linters.BeRightBack": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
 				"harper.linters.BeckAndCall": {
 					"scope": "resource",
 					"type": "boolean",
@@ -350,11 +417,23 @@
 					"default": false,
 					"description": "This rule looks for particularly boring or overused words. Using varied language is an easy way to keep a reader's attention."
 				},
+				"harper.linters.Brutality": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Suggests the more standard and common synonym `brutality`."
+				},
 				"harper.linters.ByAccident": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Incorrect preposition: `by accident` is the idiomatic expression."
+				},
+				"harper.linters.ByTheWay": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
 				},
 				"harper.linters.CanBeSeen": {
 					"scope": "resource",
@@ -602,6 +681,12 @@
 					"default": true,
 					"description": "Make sure you have the correct number of dots in your ellipsis."
 				},
+				"harper.linters.ElsePossessive": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Detects missing apostrophes in phrases like `someone elses book` and suggests the correct possessive form `else’s`."
+				},
 				"harper.linters.EludedTo": {
 					"scope": "resource",
 					"type": "boolean",
@@ -613,6 +698,30 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Detects variants like `on mass` or `in mass` and suggests `en masse`."
+				},
+				"harper.linters.EverPresent": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects the missing hyphen in `ever present` to the compound adjective `ever-present`."
+				},
+				"harper.linters.Everybody": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Looks for incorrect spacing inside the closed compound `everybody`."
+				},
+				"harper.linters.Everyday": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "This rule tries to sort out confusing the adjective `everyday` and the adverb `every day`."
+				},
+				"harper.linters.Everyone": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Looks for incorrect spacing inside the closed compound `everyone`."
 				},
 				"harper.linters.Everywhere": {
 					"scope": "resource",
@@ -710,6 +819,12 @@
 					"default": true,
 					"description": "Ensures `face first` is correctly hyphenated as `face-first` when used before `into`."
 				},
+				"harper.linters.FairBit": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects malapropisms of `a fair bit`."
+				},
 				"harper.linters.FarWorse": {
 					"scope": "resource",
 					"type": "boolean",
@@ -733,6 +848,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Ensures the correct use of `fetal position`, avoiding confusion with `feeble position`, which is not a standard phrase."
+				},
+				"harper.linters.FewUnitsOfTimeAgo": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects some expressions using `few` where `a few` is correct."
 				},
 				"harper.linters.FirstAidKit": {
 					"scope": "resource",
@@ -764,6 +885,12 @@
 					"default": true,
 					"description": "Corrects the archaic or mistaken `fro` to `for` when followed by a noun."
 				},
+				"harper.linters.ForYourInformation": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
 				"harper.linters.FreeRein": {
 					"scope": "resource",
 					"type": "boolean",
@@ -775,6 +902,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Encourages vivid writing by suggesting `freezing` instead of weaker expressions like `very cold.`"
+				},
+				"harper.linters.FurtherAdo": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `adieu` to `ado`."
 				},
 				"harper.linters.Furthermore": {
 					"scope": "resource",
@@ -1034,6 +1167,24 @@
 					"default": true,
 					"description": "Correct unidiomatic plural `in more details` to `in more detail`."
 				},
+				"harper.linters.InMyHumbleOpinion": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
+				"harper.linters.InMyOpinion": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
+				"harper.linters.InNeedOf": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `in need for` to `in need of`."
+				},
 				"harper.linters.InOneFellSwoop": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1069,6 +1220,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects the archaic or mistaken separation `in stead of` to `instead of` in everyday usage."
+				},
+				"harper.linters.Insurmountable": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Suggests the more standard and common synonym `insurmountable`."
 				},
 				"harper.linters.Intact": {
 					"scope": "resource",
@@ -1118,6 +1275,12 @@
 					"default": true,
 					"description": "Corrects the misspelling `It cam` to the proper phrase `It can`."
 				},
+				"harper.linters.ItsContraction": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Detects the possessive `its` before `had`, `been`, or `got` and offers `it's` or `it has`."
+				},
 				"harper.linters.Itself": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1147,6 +1310,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Ensures `just deserts` is used correctly, preserving its meaning of receiving an appropriate outcome for one's actions."
+				},
+				"harper.linters.KindOf": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `kinda of` to `kind of`."
 				},
 				"harper.linters.KindRegards": {
 					"scope": "resource",
@@ -1208,17 +1377,17 @@
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `likewise`."
 				},
-				"harper.linters.LinkingVerbs": {
-					"scope": "resource",
-					"type": "boolean",
-					"default": false,
-					"description": "Linking verbs connect nouns to other ideas. Make sure you do not accidentally link words that aren't nouns."
-				},
 				"harper.linters.LongSentences": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "This rule looks for run-on sentences, which can make your work harder to grok."
+				},
+				"harper.linters.LowHangingFruit": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects non-standard variants of `low-hanging fruit`."
 				},
 				"harper.linters.Malaysia": {
 					"scope": "resource",
@@ -1286,6 +1455,18 @@
 					"default": true,
 					"description": "Advises using `momentous` or `monumental` instead of `monumentous` for serious usage."
 				},
+				"harper.linters.MostNumber": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `most number` and `most amount`"
+				},
+				"harper.linters.MuchAdo": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `adieu` to `ado`."
+				},
 				"harper.linters.MuchWorse": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1334,6 +1515,12 @@
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `myself`."
 				},
+				"harper.linters.NailOnTheHead": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Replaces hat/had/hit/hid in the idiom `nail on the head` with `head`."
+				},
 				"harper.linters.NationalCapitals": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1352,6 +1539,12 @@
 					"default": true,
 					"description": "Corrects common misspellings and missing hyphen in `nerve-racking`."
 				},
+				"harper.linters.NeverMind": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
+				},
 				"harper.linters.NoOxfordComma": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1363,6 +1556,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `nobody`."
+				},
+				"harper.linters.NominalWants": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Ensures you use the correct `want` / `wants` after a nominal."
 				},
 				"harper.linters.Nonetheless": {
 					"scope": "resource",
@@ -1400,6 +1599,18 @@
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `notwithstanding`."
 				},
+				"harper.linters.NounInsteadOfVerb": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects nouns used instead of verbs when the two are related."
+				},
+				"harper.linters.Nowhere": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Looks for incorrect spacing inside the closed compound `nowhere`."
+				},
 				"harper.linters.NumberSuffixCapitalization": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1423,6 +1634,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Ensures `off-the-cuff` is correctly hyphenated."
+				},
+				"harper.linters.OhMyGod": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
 				},
 				"harper.linters.OldWivesTale": {
 					"scope": "resource",
@@ -1459,6 +1676,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects compound words that should be written as two words."
+				},
+				"harper.linters.OpenTheLight": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects using `open` instead of `turn on` or `switch on`"
 				},
 				"harper.linters.OperativeSystem": {
 					"scope": "resource",
@@ -1514,6 +1737,12 @@
 					"default": true,
 					"description": "Flags oxymoronic phrases (e.g. `amateur expert`, `increasingly less`, etc.)."
 				},
+				"harper.linters.PeaceOfMind": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `piece of mind` to `peace of mind`."
+				},
 				"harper.linters.PhrasalVerbAsCompoundNoun": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1555,6 +1784,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Typo: `moot` (meaning debatable) is correct rather than `mute`."
+				},
+				"harper.linters.PointsOfView": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects pluralizing the wrong noun in `point of view`."
 				},
 				"harper.linters.PortAuPrince": {
 					"scope": "resource",
@@ -1610,6 +1845,12 @@
 					"default": true,
 					"description": "Ensure proper capitalization of proper nouns."
 				},
+				"harper.linters.RapidFire": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Checks to ensure writers hyphenate `rapid-fire`."
+				},
 				"harper.linters.RealTrouper": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1646,6 +1887,12 @@
 					"default": true,
 					"description": "Corrects the incorrect phrase `same then` to the standard `same as`."
 				},
+				"harper.linters.SaveToSafe": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `save to <verb>` to `safe to <verb>` after a form of `be`."
+				},
 				"harper.linters.ScantilyClad": {
 					"scope": "resource",
 					"type": "boolean",
@@ -1670,11 +1917,23 @@
 					"default": true,
 					"description": "Corrects `simply grammatical` to `simple grammatical` for proper adjective usage."
 				},
+				"harper.linters.SinceDuration": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Detects the use of 'since' with a duration instead of a point in time."
+				},
 				"harper.linters.SneakingSuspicion": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Changes `sneaky suspicion` to `sneaking suspicion`."
+				},
+				"harper.linters.SomeOfThe": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Quantity words such as `some` normally take `of` before a definite article. Including `of` signals that you mean a subset of a larger set, preventing a momentary stumble in comprehension."
 				},
 				"harper.linters.Somebody": {
 					"scope": "resource",
@@ -1687,6 +1946,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Looks for incorrect spacing inside the closed compound `somehow`."
+				},
+				"harper.linters.Someone": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Looks for incorrect spacing inside the closed compound `someone`."
 				},
 				"harper.linters.SomewhatSomething": {
 					"scope": "resource",
@@ -1760,11 +2025,23 @@
 					"default": true,
 					"description": "Fixes `suppose to` to the correct `supposed to`."
 				},
+				"harper.linters.TakeItPersonally": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `take it personal` to `take it personally`."
+				},
 				"harper.linters.TakeItSeriously": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Ensures the correct use of the adverb `seriously` instead of the adjective `serious` in phrases like `take it seriously`."
+				},
+				"harper.linters.TalkToYouLater": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
 				},
 				"harper.linters.ThatChallenged": {
 					"scope": "resource",
@@ -1832,11 +2109,23 @@
 					"default": true,
 					"description": "Changes `though process` to `thought process`."
 				},
+				"harper.linters.ThrowRubbish": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Checks for throwing rubbish rather than throwing it away."
+				},
 				"harper.linters.TickingTimeClock": {
 					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects `ticking time clock` to `ticking time bomb` for idiomatic urgency or `ticking clock` otherwise."
+				},
+				"harper.linters.ToBeHonest": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Expands an initialism."
 				},
 				"harper.linters.ToDoHyphen": {
 					"scope": "resource",
@@ -2024,6 +2313,12 @@
 					"default": true,
 					"description": "Incorrect verb form: `will` should be followed by the base form `contain`."
 				},
+				"harper.linters.WinPrize": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Catches the mix-up between `price`/`prise` and `prize` after the verb `win`."
+				},
 				"harper.linters.WordPressDotcom": {
 					"scope": "resource",
 					"type": "boolean",
@@ -2059,6 +2354,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Corrects `worst than` to `worse than` for proper comparative usage."
+				},
+				"harper.linters.WorstCaseScenario": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Corrects `worst-case scenario` when the hyphen is missing or `worse` is used instead of `worst`."
 				},
 				"harper.linters.WorstEver": {
 					"scope": "resource",

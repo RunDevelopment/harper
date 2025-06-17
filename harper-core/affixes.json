@@ -56,12 +56,13 @@
 			"target": [
 				{
 					"metadata": {
-						"adjective": {},
 						"adverb": {}
 					}
 				}
 			],
-			"base_metadata": {}
+			"base_metadata": {
+				"adjective": {}
+			}
 		},
 		"U": {
 			"#": "'un-' prefix",
@@ -125,7 +126,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"R": {
+		">": {
 			"#": "'-(i)er' suffix",
 			"kind": "suffix",
 			"cross_product": true,
@@ -160,7 +161,7 @@
 			],
 			"base_metadata": {}
 		},
-		"C": {
+		"e": {
 			"#": "'de-' prefix",
 			"kind": "prefix",
 			"cross_product": true,
@@ -174,7 +175,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"V": {
+		"v": {
 			"#": "'-ive' suffix",
 			"kind": "suffix",
 			"cross_product": false,
@@ -193,7 +194,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"N": {
+		"n": {
 			"#": "nominalization suffixes: -ion, -ication, -en",
 			"kind": "suffix",
 			"cross_product": true,
@@ -217,7 +218,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"A": {
+		"r": {
 			"#": "'re-' prefix",
 			"kind": "prefix",
 			"cross_product": true,
@@ -260,7 +261,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"P": {
+		"p": {
 			"#": "'-(i)ness' suffix",
 			"kind": "suffix",
 			"cross_product": true,
@@ -284,7 +285,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"M": {
+		"g": {
 			"#": "-'s possessive suffix; contraction of 'has' and 'is",
 			"kind": "suffix",
 			"cross_product": true,
@@ -389,14 +390,14 @@
 					},
 					"metadata": {
 						"verb": {
-							"tense": "Present"
+							"verb_form": "ThirdPersonSingularPresentForm"
 						}
 					}
 				}
 			],
 			"base_metadata": {}
 		},
-		"D": {
+		"d": {
 			"#": "'-(e)d' suffix",
 			"kind": "suffix",
 			"cross_product": true,
@@ -459,7 +460,7 @@
 				{
 					"metadata": {
 						"verb": {
-							"tense": "Present"
+							"verb_form": "ProgressiveForm"
 						},
 						"noun": null,
 						"adjective": null
@@ -482,7 +483,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"O": {
+		"f": {
 			"#": "'-ful' suffix",
 			"kind": "suffix",
 			"cross_product": true,
@@ -496,7 +497,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"I": {
+		"i": {
 			"#": "'in-' prefix",
 			"kind": "prefix",
 			"cross_product": true,
@@ -534,7 +535,7 @@
 			"target": [],
 			"base_metadata": {}
 		},
-		"J": {
+		"z": {
 			"#": "'-ings' suffix",
 			"kind": "suffix",
 			"cross_product": true,
@@ -555,7 +556,7 @@
 		}
 	},
 	"properties": {
-		"1": {
+		"N": {
 			"#": "(singular) noun property",
 			"metadata": {
 				"noun": {
@@ -563,7 +564,7 @@
 				}
 			}
 		},
-		"2": {
+		"O": {
 			"#": "proper noun property",
 			"metadata": {
 				"noun": {
@@ -571,7 +572,7 @@
 				}
 			}
 		},
-		"3": {
+		"l": {
 			"#": "linking verb property",
 			"//": "see also m: auxiliary verb property",
 			"metadata": {
@@ -580,32 +581,32 @@
 				}
 			}
 		},
-		"4": {
+		"V": {
 			"#": "verb property",
 			"metadata": {
 				"verb": {}
 			}
 		},
-		"5": {
+		"J": {
 			"#": "adjective property",
 			"metadata": {
 				"adjective": {}
 			}
 		},
-		"6": {
+		"x": {
 			"#": "swear word property",
 			"propagate": true,
 			"metadata": {
 				"swear": true
 			}
 		},
-		"7": {
+		"C": {
 			"#": "conjunction property",
 			"metadata": {
 				"conjunction": {}
 			}
 		},
-		"8": {
+		"I": {
 			"#": "pronoun property",
 			"metadata": {
 				"pronoun": {}
@@ -625,19 +626,19 @@
 				"common": true
 			}
 		},
-		"+": {
+		"P": {
 			"#": "preposition property",
 			"metadata": {
 				"preposition": true
 			}
 		},
-		"-": {
+		"D": {
 			"#": "determiner property",
 			"metadata": {
 				"determiner": true
 			}
 		},
-		"j": {
+		"R": {
 			"#": "adverb property",
 			"metadata": {
 				"adverb": {}
@@ -659,17 +660,20 @@
 			"#": "first-person property",
 			"metadata": {
 				"pronoun": {
-					"is_plural": false
+					"is_plural": false,
+					"person": "First"
 				}
 			}
 		},
-		"n": {
+		"2": {
 			"#": "second-person property",
 			"metadata": {
-				"pronoun": {}
+				"pronoun": {
+					"person": "Second"
+				}
 			}
 		},
-		"t": {
+		"3": {
 			"#": "third-person property",
 			"metadata": {
 				"pronoun": {}
@@ -718,28 +722,38 @@
 			"#": "American property",
 			"propagate": true,
 			"metadata": {
-				"dialect": "American"
+				"dialects": "AMERICAN"
 			}
 		},
 		"!": {
 			"#": "GB property",
 			"propagate": true,
 			"metadata": {
-				"dialect": "British"
+				"dialects": "BRITISH"
 			}
 		},
 		"@": {
 			"#": "CA property",
 			"propagate": true,
 			"metadata": {
-				"dialect": "Canadian"
+				"dialects": "CANADIAN"
 			}
 		},
 		"_": {
 			"#": "AU property",
 			"propagate": true,
 			"metadata": {
-				"dialect": "Australian"
+				"dialects": "AUSTRALIAN"
+			}
+		},
+		"w": {
+			"#": "first-person plural property",
+			"propagate": true,
+			"metadata": {
+				"pronoun": {
+					"is_plural": true,
+					"person": "First"
+				}
 			}
 		}
 	}

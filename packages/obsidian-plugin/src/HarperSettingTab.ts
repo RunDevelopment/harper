@@ -2,31 +2,41 @@ import './index.js';
 import { Dialect } from 'harper.js';
 import { startCase } from 'lodash-es';
 import { type App, PluginSettingTab, Setting } from 'obsidian';
+import type State from './State.js';
+import type { Settings } from './State.js';
+import { dictToString, stringToDict } from './dictUtils';
 import type HarperPlugin from './index.js';
-import type { Settings } from './index.js';
 
 export class HarperSettingTab extends PluginSettingTab {
-	private plugin: HarperPlugin;
+	private state: State;
 	private settings: Settings;
-	private descriptions: Record<string, string>;
+	private descriptionsHTML: Record<string, string>;
+	private plugin: HarperPlugin;
 
-	constructor(app: App, plugin: HarperPlugin) {
+	constructor(app: App, plugin: HarperPlugin, state: State) {
 		super(app, plugin);
+		this.state = state;
 		this.plugin = plugin;
 
-		this.updateDescriptions();
-		this.updateSettings();
+		// Poll every so often
+		const update = () => {
+			this.updateDescriptions();
+			this.updateSettings();
+			setTimeout(update, 1000);
+		};
+
+		update();
 	}
 
 	updateSettings() {
-		this.plugin.getSettings().then((v) => {
+		this.state.getSettings().then((v) => {
 			this.settings = v;
 		});
 	}
 
 	updateDescriptions() {
-		this.plugin.getDescriptions().then((v) => {
-			this.descriptions = v;
+		this.state.getDescriptionHTML().then((v) => {
+			this.descriptionsHTML = v;
 		});
 	}
 
@@ -34,12 +44,17 @@ export class HarperSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		new Setting(containerEl).setName('Use Web Worker').addToggle((toggle) =>
-			toggle.setValue(this.settings.useWebWorker).onChange(async (value) => {
-				this.settings.useWebWorker = value;
-				await this.plugin.initializeFromSettings(this.settings);
-			}),
-		);
+		new Setting(containerEl)
+			.setName('Use Web Worker')
+			.setDesc(
+				'Whether to run the Harper engine in a separate thread. Improves stability and speed at the cost of memory.',
+			)
+			.addToggle((toggle) =>
+				toggle.setValue(this.settings.useWebWorker).onChange(async (value) => {
+					this.settings.useWebWorker = value;
+					await this.state.initializeFromSettings(this.settings);
+				}),
+			);
 
 		new Setting(containerEl).setName('English Dialect').addDropdown((dropdown) => {
 			dropdown
@@ -51,10 +66,24 @@ export class HarperSettingTab extends PluginSettingTab {
 				.onChange(async (value) => {
 					const dialect = Number.parseInt(value);
 					this.settings.dialect = dialect;
-					await this.plugin.initializeFromSettings(this.settings);
+					await this.state.initializeFromSettings(this.settings);
 					this.plugin.updateStatusBar(dialect);
 				});
 		});
+
+		new Setting(containerEl)
+			.setName('Personal Dictionary')
+			.setDesc(
+				'Make edits to your personal dictionary. Add names, places, or terms you use often. Each line should contain its own word.',
+			)
+			.addTextArea((ta) => {
+				ta.inputEl.cols = 20;
+				ta.setValue(dictToString(this.settings.userDictionary ?? [''])).onChange(async (v) => {
+					const dict = stringToDict(v);
+					this.settings.userDictionary = dict;
+					await this.state.initializeFromSettings(this.settings);
+				});
+			});
 
 		new Setting(containerEl)
 			.setName('Delay')
@@ -68,7 +97,7 @@ export class HarperSettingTab extends PluginSettingTab {
 					.setValue(this.settings.delay ?? -1)
 					.onChange(async (value) => {
 						this.settings.delay = value;
-						await this.plugin.initializeFromSettings(this.settings);
+						await this.state.initializeFromSettings(this.settings);
 					});
 			});
 
@@ -77,7 +106,7 @@ export class HarperSettingTab extends PluginSettingTab {
 				.setButtonText('Forget Ignored Suggestions')
 				.onClick(() => {
 					this.settings.ignoredLints = undefined;
-					this.plugin.initializeFromSettings(this.settings);
+					this.state.initializeFromSettings(this.settings);
 				})
 				.setWarning();
 		});
@@ -106,20 +135,30 @@ export class HarperSettingTab extends PluginSettingTab {
 	renderLintSettings(searchQuery: string, containerEl: HTMLElement) {
 		containerEl.innerHTML = '';
 
+		const queryLower = searchQuery.toLowerCase();
+
 		for (const setting of Object.keys(this.settings.lintSettings)) {
 			const value = this.settings.lintSettings[setting];
-			const description = this.descriptions[setting];
+			const descriptionHTML = this.descriptionsHTML[setting];
 
 			if (
 				searchQuery !== '' &&
-				!(description.contains(searchQuery) || setting.contains(searchQuery))
+				!(
+					descriptionHTML.toLowerCase().contains(queryLower) ||
+					setting.toLowerCase().contains(queryLower)
+				)
 			) {
 				continue;
 			}
 
+			const fragment = document.createDocumentFragment();
+			const template = document.createElement('template');
+			template.innerHTML = descriptionHTML;
+			fragment.appendChild(template.content);
+
 			new Setting(containerEl)
 				.setName(startCase(setting))
-				.setDesc(description)
+				.setDesc(fragment)
 				.addDropdown((dropdown) =>
 					dropdown
 						.addOption('default', 'Default')
@@ -128,14 +167,14 @@ export class HarperSettingTab extends PluginSettingTab {
 						.setValue(valueToString(value))
 						.onChange(async (value) => {
 							this.settings.lintSettings[setting] = stringToValue(value);
-							await this.plugin.initializeFromSettings(this.settings);
+							await this.state.initializeFromSettings(this.settings);
 						}),
 				);
 		}
 	}
 }
 
-function valueToString(value: boolean | undefined): string {
+function valueToString(value: boolean | null): string {
 	switch (value) {
 		case true:
 			return 'enable';
@@ -144,18 +183,16 @@ function valueToString(value: boolean | undefined): string {
 		case null:
 			return 'default';
 	}
-
-	throw 'Fell through case';
 }
 
-function stringToValue(str: string): boolean | undefined {
+function stringToValue(str: string): boolean | null {
 	switch (str) {
 		case 'enable':
 			return true;
 		case 'disable':
 			return false;
 		case 'default':
-			return undefined;
+			return null;
 	}
 
 	throw 'Fell through case';

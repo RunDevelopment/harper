@@ -39,7 +39,7 @@ Message: |
       11 | ## Article. I.
          |             ^~ Did you mean to spell `I.` this way?
 Suggest:
-  - Replace with: “Ir”
+  - Replace with: “Ix”
   - Replace with: “IC”
   - Replace with: “IE”
 
@@ -201,6 +201,16 @@ Message: |
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       94 | the people fill the vacancies by election as the legislature may direct.
          | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ This sentence is 109 words long.
+
+
+
+Lint:    WordChoice (63 priority)
+Message: |
+      89 | third Class at the Expiration of the sixth Year, so that one third may be
+         |                                                                    ^~~~~~ Did you mean the closed compound noun “maybe”?
+      90 | chosen every second Year; and when vacancies happen in the representation of
+Suggest:
+  - Replace with: “maybe”
 
 
 
@@ -1309,16 +1319,6 @@ Message: |
 
 
 
-Lint:    WordChoice (63 priority)
-Message: |
-     550 | committed; but when not committed within any State, the Trial shall be at such
-     551 | Place or Places as the Congress may by Law have directed.
-         |                                     ^~~~~~ The auxiliary verb “have” implies the existence of the closed compound noun “bylaw”.
-Suggest:
-  - Replace with: “byLaw”
-
-
-
 Lint:    Spelling (63 priority)
 Message: |
      561 | Attainder of Treason shall work Corruption of Blood, or Forfeiture except
@@ -1675,9 +1675,9 @@ Suggest:
 Lint:    Capitalization (31 priority)
 Message: |
      721 | done in Convention by the Unanimous Consent of the States present the
-         | ^ This sentence does not start with a capital letter
+         | ^~~~ This sentence does not start with a capital letter
 Suggest:
-  - Replace with: “D”
+  - Replace with: “Done”
 
 
 
